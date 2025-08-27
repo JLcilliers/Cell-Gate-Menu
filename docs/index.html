@@ -887,46 +887,41 @@
                         <li class="nav-item">
                             <a href="https://cell-gate.com/how-it-works/" class="nav-link has-dropdown">Why CellGate</a>
                             <div class="mega-menu why-menu">
-                                <div class="mega-menu-content">
+                                <div class="mega-menu-content" id="whyMenuContainer">
                                     <div class="menu-column">
                                         <h3 class="column-title">Only CellGate</h3>
                                         <ul class="support-links">
                                             <li>
                                                 <a href="https://cell-gate.com/truecloud/" class="support-link benefit-link"
-                                                   onmouseover="updateWhyMessage('centralized')"
-                                                   onmouseout="resetWhyMessage()">
+                                                   data-feature="centralized">
                                                     <span class="support-icon">☁️</span>
                                                     Centralized Management for<br>All Your Access Control Solutions
                                                 </a>
                                             </li>
                                             <li>
                                                 <a href="https://cell-gate.com/cellgate-app/" class="support-link benefit-link"
-                                                   onmouseover="updateWhyMessage('control')"
-                                                   onmouseout="resetWhyMessage()">
+                                                   data-feature="control">
                                                     <span class="support-icon">📱</span>
                                                     Control Your Property From Anywhere
                                                 </a>
                                             </li>
                                             <li>
                                                 <a href="https://cell-gate.com/watchman/" class="support-link benefit-link"
-                                                   onmouseover="updateWhyMessage('video')"
-                                                   onmouseout="resetWhyMessage()">
+                                                   data-feature="video">
                                                     <span class="support-icon">👥</span>
                                                     See Who's Coming, When, and Where
                                                 </a>
                                             </li>
                                             <li>
                                                 <a href="https://cell-gate.com/" class="support-link benefit-link"
-                                                   onmouseover="updateWhyMessage('reliable')"
-                                                   onmouseout="resetWhyMessage()">
+                                                   data-feature="reliable">
                                                     <span class="support-icon">🔄</span>
                                                     Reliable Access, Even if Networks Fail
                                                 </a>
                                             </li>
                                             <li>
                                                 <a href="https://cell-gate.com/gold-key-service/" class="support-link benefit-link"
-                                                   onmouseover="updateWhyMessage('support')"
-                                                   onmouseout="resetWhyMessage()">
+                                                   data-feature="support">
                                                     <span class="support-icon">🔑</span>
                                                     Expert Help That Keeps You Running
                                                 </a>
@@ -935,7 +930,7 @@
                                     </div>
                                     
                                     <div class="menu-column">
-                                        <div id="whyMessage" class="featured-box featured-green" style="padding: 30px; text-align: center;">
+                                        <div id="whyMessage" class="featured-box featured-green" style="padding: 30px; text-align: center; background: white; color: #333;">
                                             <img src="https://cell-gate.com/wp-content/uploads/2024/01/TrueCloud-Connect-Logo.png" alt="TrueCloud Connect" style="max-width: 200px; margin: 0 auto 20px; display: block;">
                                             <div style="font-size: 20px; font-weight: 600; margin-bottom: 15px; color: #0066CC;">CONNECTING</div>
                                             <div style="display: flex; justify-content: center; gap: 10px; margin-bottom: 20px;">
@@ -1279,10 +1274,10 @@
                         <p style="font-size: 14px; color: #666; margin-bottom: 20px;">Mobile Mission Control for Your Property's Gates & Doors</p>
                         <div style="display: flex; justify-content: center; gap: 15px;">
                             <a href="https://play.google.com/store/apps/details?id=com.celaccess&hl=en_US&pli=1" target="_blank">
-                                <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Get it on Google Play" style="height: 50px;">
+                                <img src="data:image/png;base64,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" alt="Get it on Google Play" style="height: 40px;">
                             </a>
                             <a href="https://apps.apple.com/us/app/cellgate-mobile-connect/id575775114" target="_blank">
-                                <img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg" alt="Download on the App Store" style="height: 50px;">
+                                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAH0AAAAoCAYAAADLEoLaAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAmKSURBVHgB7ZxrbBzVFcf/Z2Z2196svbbjOLETJ3FCIAFCoZRHKBWhIpVWoqJVq6pfqj5UpKqVWtRKSJWQWqRW6oe2UqWqfaAKqQ/6ElCpSou/FKXlo4khhAAphBCSOM7DTpzY8e56vTsz9/Tce2d29jH2rne9dhLuX7qa2Tszd+7Mf84999xzz5UgCAQEZXJGGo9MOpBc1Yo8BDAVZSINhNIyN3cBCAQOeGqXCLQgHhwYRArVU4JA4IAu72RJp38CYhcJJQhQJQoEZSAkOT0RjCAJqJSQojLILqJAsBQJVUs42S3JEy0mxJRUdRMkkd9v0a5GKCwF02Eq0E12t3lNQ3vZKiuA5S9LdAczqx3PFLBAoMRR5jHT6k5ZhYS8lT/LnDQhv5J8V7T6vANZBrlhpLRRTMjjOL1NnJ6HYKGQYHE2eUZzZaeSIgVL2f9vOJdN/nqCnBYiQzKP0ynhZ9YIlzMYSfZ8VhtlS88gRYJQQh6mYymEMUaKJ5EB5EmSk8wLBKaM96V/DRkYqAzpBXQEwXlx3x/fvfx6IFhSKJDAQaRgwEQ/0h0XQ+lBBEuKIKQXkcWRAD1lWqnXbJPSZm5fhCCCQCBwxBaJdAlMmEhiTJKyWzFMXlQkxvNJTqLyXCEMSqwFOzH7P28o4kFhUe4/aJm9Vn8kxKhGBu8H36/RzP1WbuJ7qCdRdLaEQWVY4UXQZ6zn8dphOKsP/LgPs+OT7dhnF0YnPxcZ9E8VXQRtVJaUDyRhSKc4HhyD7NgQMsGiCFhWVBHSGU+WRk6UQsKXFBJ1RdNBLCiCkC4Q1AJWSCchI8q6VJyS5ysQTAUr/h5jnQ0bCJIBZL8S1GJO5gN9tMUJBFXDxd8TbL8pTcSm5oJF8fdSCQQCQYVwRu8v/rT/U9FrEzBAFcRBMCdcROY6C0lS/lQiPvVJtCOGGAQ3lzCocCENqQihRaRQxBjGJFm6kTxz+cRjKxIbVjQ9HFlRnHwFsCAn5vFg65kDvScv9I6dfflFBJ1hgvkHA5ASSGxGnvLJJEnyZlnoTQ+m7nrg/d5jf7B+SsLdwbA6YCq7J8h3uP96HQRzABLlkqQLhsXtGsHhSKvzufrGJnWlm5uuaG1cNL6J7z9+cfDcJ8cSSL3FLCxZdCVy/0A7SIMaLPRkzGzANmKxL1Xy4qoY0K+FIDDnsJHOINnl/m8r3mYJq3F1XDOuY/A8b8Gxd1f3Lkuu6mjtvBqCuQeKk86MpJsQJO8j4Zgw8oJgg6gBqyxOEMfqZcU1Gj7eHHKfW/nSSxDcBCLAQDAv4IJASCegP2PoT+j6Hob+NLG6H6q0j+3v0dR1J3R0Z5y7LPXKBQjmFJZZ9yCNMTOLECRYVVRFe5A0zpfGzMWyaJJRaLI6/4+hxyCoE3BoV4jtGOYiojKzm4IFgRPSJSi8fMmEEKdnl2BBYM/Npe0TCLzOBLOCINUwxzAC3Kxx4dJyy63BksIaB0o43lhw+u1Ckj6zIaBGtU7sZJCLbI/3lhCq5fQRzCiCuvKKO9HJLqf3VmP1EjGFKhLMdyQtsBuJCMJ7jQGI7lwhxYKQQBCJghAiqCWkuUZy4W+LdC2n3GRJZxT/DZ5+L3zKFgRrB9tOvRaTOUl/bZW6Pk5JZ0tqy0TUP1HUdYOjvCMRyOqKlXXdMO1fKCh5qqIm0m5zN9P2J3dz9Gzv5RyJlsRg+MQhJZ7bX6vX/vu9p3u/e7z3vP0nNp8/vfXTzXd/6p5vrF8KSZKxY8e/3vt+75mTvPxlN8cSsXvYuQ4nP02/BwLFbiWfL+iRpoSaJK0mBuujqKx7XGP1R8ZJv6hFKe3RwTOcQoC/RY3J5iTpILTQSmjKI5XyV2/WdAy6fqv/+Frf8b7PPvHB5V0Rpdyy6hdvKtffIe2KoLJ1ZxdAY7GBf9fFqVa6w6pNRDuOD+gXWdU2HySQ8eTj2CdORD+HBW8jYh/vKYJJnXqbWSSJcT5D9d0J/HajXRAZbP41OcRR+x4TcNzySjqfJ+i5UZrQD7LiGJzF7xMzHqXLH1VqzXo3xGRqSFpqKgdT9x9vemhL/w9+4rLN5G/8vnq6W9VgYMzB0O5gJ6KwxqOIo3G+pqJWz9kYPf2KE/3uOpJh4/ug6eiYj/e1VigtIV2SJAiWJs2HL3yT+e3I24XO5eKXiC+mfv5b0gJYGKQzSkI+4jyIdXGTSu+vBOQo9uAb2I5PY4ZQ8V2yfO8d0N8z6+NxYJvP5ELVrq4RJY1HqSdoJjwkJnNLGfLKzb3HxWRTgaDKJJQGCMoQME8QCKYxQiE2OZsajOBmQxCO8fxCBXFcH3H8pSRCj7qIJ+lzibpPUhQhcmchCQWqJC5GcJNR0HRRNBBWr7A6eSLmIl3k6vOGhbPPZcPCVRJGQAzjMWdSKJVdqXKv0VFQV3C8VcQtjEYvQzALqOjr0x3PUvE8nZNhfwcvvOOwl5G7ZufqRRhcOLuy6hEQa9OW+JSZPpJFEhWw+ULnPBg5y2JLGDVM2Lxv8vTKsm6xHvOsZwyXNnZKKAQxKi0puzgjKnOvJdyIJ0wfnRHBLKBiCY9R1YcTzrGzVaINNnYaJy6KTAmH7O1lRxOOGVLzLGBTFEJBkyXGfXhJcAOy8VaJcAwHqzeFrTgObiufw06z5VTHqW6V1fQu7aOj8B4iZpvLZkZ6GQPLBDMPXh8+52f8q0jHb8gu/WP2fWBHvBdJp2P7hJ2/BvT9Hqr6G6RNvzMPCKIp+KzfrA4t+6xJJxyxP9gN1Bd+a8xOQtB8pVnZFJmRbjhQXp5xU9rbhvdJJFtFJKT3hn5k/aPCupVBLvG5HcF1J71QjKzflXWyFD0+OVEYYwzIXsrJy/LhMezXYdJQM8YHI3RSGu3j7x7g9fLEWL/lNXb/L+KhJ5gHBOX00iCRUj72ZN2iJwEJw9dXrGxctqGhtbmxra2xubEhaqxiX3rW0A2s6+y5c/Fyeib8PXciJ9aPYGYQkG8zUZJiL2HGkM9NNMzEJZfzOzgjXlYEZoQGi0lEd8kyCy2bOg8o9BksRoKrKFCqpnv3W9+tOgSLh4AYOQGCJUUQJnWCoAYQBJNa6FLqZdvqvdQq1F2yrN6nLsJHNnkQojR3tbiudHJjJL2XJA8oAhaBCMSiDkG98X/zCn5mvt7ywgAAAABJRU5ErkJggg==" alt="Download on the App Store" style="height: 40px;">
                             </a>
                         </div>
                     </div>
@@ -1379,6 +1374,30 @@
             messageBox.style.background = 'white';
             messageBox.style.color = '#333';
         }
+        
+        // Set up Why CellGate hover events
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get all benefit links
+            const benefitLinks = document.querySelectorAll('.benefit-link');
+            let currentHoveredFeature = null;
+            
+            benefitLinks.forEach(link => {
+                link.addEventListener('mouseenter', function() {
+                    const feature = this.getAttribute('data-feature');
+                    currentHoveredFeature = feature;
+                    updateWhyMessage(feature);
+                });
+            });
+            
+            // Only reset when leaving the entire menu container
+            const whyMenuContainer = document.getElementById('whyMenuContainer');
+            if (whyMenuContainer) {
+                whyMenuContainer.addEventListener('mouseleave', function() {
+                    currentHoveredFeature = null;
+                    resetWhyMessage();
+                });
+            }
+        });
     </script>
 </body>
 </html>
