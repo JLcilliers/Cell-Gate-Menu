@@ -56,6 +56,24 @@
             color: #52A6A5;
         }
         
+        .truecloud-login-btn {
+            background: #52A6A5;
+            color: white !important;
+            padding: 6px 16px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+        
+        .truecloud-login-btn:hover {
+            background: #3E8281;
+            color: white !important;
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        
         .logo-nav {
             display: flex;
             align-items: center;
@@ -688,7 +706,7 @@
                 <a href="tel:855-694-2837">📞 (855) 694-2837</a>
             </div>
             <div class="top-links">
-                <a href="https://cell-gate.com/truecloud/">TCC LOGIN</a>
+                <a href="https://cell-gate.com/truecloud/" class="truecloud-login-btn">TrueCloud Connect Login</a>
             </div>
         </div>
     </div>
@@ -817,7 +835,7 @@
                                             </li>
                                         </ul>
                                         
-                                        <h4 style="font-size: 14px; color: #666; margin: 15px 0 10px; font-weight: 600;">Wireless & Wired Controllers</h4>
+                                        <h4 style="font-size: 14px; color: #666; margin: 25px 0 10px; font-weight: 600;">Wireless & Wired Controllers</h4>
                                         <ul class="product-list">
                                             <li class="product-item">
                                                 <a href="https://cell-gate.com/entria/four-door-controller/" class="product-link">
@@ -833,7 +851,7 @@
                                             </li>
                                         </ul>
                                         
-                                        <h4 style="font-size: 14px; color: #666; margin: 15px 0 10px; font-weight: 600;">Readers & Credentials</h4>
+                                        <h4 style="font-size: 14px; color: #666; margin: 25px 0 10px; font-weight: 600;">Readers & Credentials</h4>
                                         <ul class="product-list">
                                             <li class="product-item">
                                                 <a href="https://cell-gate.com/readers/infinity/" class="product-link">
@@ -1273,9 +1291,9 @@
                 link: ''
             },
             centralized: {
-                title: '☁️ TrueCloud Connect™',
-                desc: 'Manage multiple properties and thousands of users from a single cloud-based dashboard. Real-time synchronization ensures your access lists are always up-to-date across all devices and locations.',
-                link: 'Learn About TrueCloud →'
+                title: '',
+                desc: '<img src="https://i.ibb.co/fGNPBvZS/CONNECTING-1.png" alt="TrueCloud Connect" style="max-width: 100%; height: auto;">',
+                link: ''
             },
             video: {
                 title: '👥 See Who\'s Coming',
@@ -1303,10 +1321,19 @@
             const messageBox = document.getElementById('whyMessage');
             const message = whyMessages[type] || whyMessages.default;
             
+            // For centralized, remove all styling
+            if (type === 'centralized') {
+                messageBox.className = '';
+                messageBox.style.cssText = 'background: white; padding: 20px;';
+            } else {
+                messageBox.className = 'featured-box featured-green';
+                messageBox.style.cssText = '';
+            }
+            
             let linkHtml = message.link ? `<a href="https://cell-gate.com/about-us/" class="featured-link">${message.link}</a>` : '';
             
             messageBox.innerHTML = `
-                <div class="featured-title">${message.title}</div>
+                ${message.title ? `<div class="featured-title">${message.title}</div>` : ''}
                 <div class="featured-desc">${message.desc}</div>
                 ${linkHtml}
             `;
