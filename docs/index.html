@@ -10,7 +10,7 @@
     *{margin:0;padding:0;box-sizing:border-box}
     body{font-family:'Open Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;background:#fff}
 
-    /* Header */
+    /* Top bar and header */
     .header{background:#fff;box-shadow:0 2px 4px rgba(0,0,0,.1);position:relative;z-index:1000}
     .top-bar{background:#1a1a1a;color:#fff;padding:8px 0;font-size:13px}
     .container{max-width:1400px;margin:0 auto;padding:0 20px}
@@ -121,18 +121,18 @@
     .mobile-submenu-link{display:block;padding:8px 12px;color:#666;text-decoration:none;font-size:14px}
     .mobile-submenu-link:hover{color:#0066cc}
 
-    /* Visitor card - lift higher so the underline aligns with the other column titles */
-    :root{--visitor-lift:-26px} /* tweak to -24px or -28px if your fonts render differently */
+    /* Visitor card alignment - use a single variable so you can nudge by 1px if needed */
+    :root{--visitor-lift:-22px} /* was -26px - lowered slightly to align the three lines */
     .products-menu .visitor-card{
       background:rgba(82,166,165,.08);
       border:2px solid #52A6A5;
       border-radius:8px;
-      padding:12px 20px 20px;  /* reduced top padding to bring the h3 up */
+      padding:12px 20px 20px;   /* keep reduced top padding so the h3 sits high inside */
       margin-top:var(--visitor-lift);
       margin-bottom:20px;
       box-shadow:0 4px 6px rgba(0,0,0,.1)
     }
-    .products-menu .visitor-card .column-title{margin-bottom:20px} /* keep same rhythm as other titles */
+    .products-menu .visitor-card .column-title{margin-bottom:20px}
 
     /* Responsive */
     @media (max-width:1200px){
@@ -144,7 +144,7 @@
       .nav-link{font-size:14px}
       .mega-menu{min-width:600px;max-width:700px}
       .products-menu .mega-menu-content{grid-template-columns:repeat(2,1fr)}
-      :root{--visitor-lift:-22px}
+      :root{--visitor-lift:-18px}
     }
     @media (max-width:768px){
       nav{display:none}
@@ -234,7 +234,7 @@
               <a href="https://cell-gate.com/watchman/" class="nav-link has-dropdown">Products</a>
               <div class="mega-menu products-menu">
                 <div class="mega-menu-content">
-                  <!-- Column 1 -->
+                  <!-- Column 1: Video Intercom -->
                   <div class="menu-column">
                     <h3 class="column-title">Video Intercom</h3>
                     <h4 style="font-size:14px;color:#666;margin:15px 0 10px;font-weight:600">Live Video Telephone Entry</h4>
@@ -266,7 +266,7 @@
                     </ul>
                   </div>
 
-                  <!-- Column 2 -->
+                  <!-- Column 2: Access Control -->
                   <div class="menu-column">
                     <h3 class="column-title">Access Control</h3>
 
@@ -319,7 +319,7 @@
                     </ul>
                   </div>
 
-                  <!-- Column 3 -->
+                  <!-- Column 3: Visitor Management -->
                   <div class="menu-column">
                     <div class="visitor-card">
                       <h3 class="column-title">Visitor Management</h3>
@@ -597,12 +597,9 @@
       box.innerHTML=(m.title?'<div style="font-size:22px;font-weight:700;text-align:center;margin-bottom:15px;color:#333;">'+m.title+'</div>':'')+'<div style="text-align:center;">'+m.desc+'</div>';
     }
     function resetWhyMessage(){updateWhyMessage('default')}
-
     document.addEventListener('DOMContentLoaded',function(){
       document.querySelectorAll('.benefit-link').forEach(link=>{
-        link.addEventListener('mouseenter',function(){
-          updateWhyMessage(this.getAttribute('data-feature'));
-        });
+        link.addEventListener('mouseenter',function(){updateWhyMessage(this.getAttribute('data-feature'))});
       });
       const cont=document.getElementById('whyMenuContainer');
       if(cont){cont.addEventListener('mouseleave',resetWhyMessage)}
