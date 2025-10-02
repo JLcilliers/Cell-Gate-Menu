@@ -330,6 +330,7 @@
             background: #E8F5F3;
             transform: translateX(5px);
             box-shadow: 0 2px 8px rgba(82,166,165,0.2);
+            border: 2px solid #333;
         }
         
         .solution-icon {
@@ -447,12 +448,14 @@
             color: white !important;
             text-decoration: none;
             border-radius: 8px;
-            font-size: 16px;
+            font-size: 14px;
             font-weight: 700;
             text-align: center;
             transition: all 0.3s;
             box-shadow: 0 4px 12px rgba(82,166,165,0.3);
             border: 3px solid #52A6A5;
+            letter-spacing: 2px;
+            text-transform: uppercase;
         }
         
         .tpsa-prominent-link:hover {
@@ -472,8 +475,8 @@
         }
         
         .featured-gold {
-            background: linear-gradient(135deg, rgba(234, 182, 0, 0.9), rgba(204, 158, 0, 0.9)), 
-                        url('https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=800') center/cover;
+            background: linear-gradient(135deg, rgba(234, 182, 0, 0.85), rgba(204, 158, 0, 0.85)), 
+                        url('https://i.ibb.co/7xmJhqBF/20220818-cellgate-427.jpg') center/cover;
             color: white;
         }
         
@@ -736,10 +739,10 @@
 </head>
 <body>
     <!-- Top Bar (As per Approved Excel) -->
-    <div class="top-bar">
+            <div class="top-bar">
         <div class="container">
             <div class="top-links">
-                <a href="tel:855-694-2837">📞 (855) 694-2837</a>
+                <a href="tel:855-694-2837" style="font-size: 16px; font-weight: 600;">(855) 694-2837</a>
             </div>
             <div class="top-links">
                 <a href="https://cell-gate.com/truecloud/" class="truecloud-login-btn">TrueCloud Connect Login</a>
@@ -915,10 +918,10 @@
                                         <h3 class="column-title">Visitor Management</h3>
                                         
                                         <div style="background: linear-gradient(135deg, rgba(82,166,165,0.15), rgba(62,130,129,0.15)), 
-                                                    url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800') center/cover; 
+                                                    url('https://i.ibb.co/DDtBBLRY/20220818-cellgate-426.jpg') center/cover; 
                                                     border: 2px solid #52A6A5; border-radius: 8px; padding: 20px; margin-bottom: 15px; 
                                                     box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
-                                            <div style="background: rgba(255,255,255,0.95); padding: 15px; border-radius: 6px;">
+                                            <div style="background: rgba(255,255,255,0.75); padding: 15px; border-radius: 6px;">
                                                 <h4 style="font-size: 14px; font-weight: 600; color: #333; margin-bottom: 8px;">Access Credentials</h4>
                                                 <div style="margin-left: 15px;">
                                                     <h5 style="font-size: 13px; font-weight: 600; color: #555; margin: 8px 0 5px;">Visitors</h5>
@@ -951,7 +954,7 @@
                                         <a href="https://cell-gate.com/" class="tpsa-prominent-link" 
                                            onmouseover="updateWhyMessage('tpsa')"
                                            onmouseout="resetWhyMessage()">
-                                            ⭐ Total Property Security Access
+                                            TOTAL PROPERTY SECURITY ACCESS →
                                         </a>
                                         
                                         <ul class="support-links">
@@ -987,7 +990,7 @@
                                     </div>
                                     
                                     <div class="menu-column">
-                                        <div id="whyMessage" class="featured-box" style="background: #f5f5f5; padding: 25px; border-radius: 8px; border: 3px solid #52A6A5;">
+                                        <div id="whyMessage" class="featured-box" style="background: #f5f5f5; padding: 25px; border-radius: 8px; border: 3px solid #52A6A5; cursor: pointer;" onclick="window.location.href='https://cell-gate.com/'">
                                             <div class="featured-desc" style="text-align: center;">
                                                 <img src="https://cell-gate.com/wp-content/uploads/2025/09/Screenshot_2025-09-29_205305-removebg.png" alt="TPSA" style="max-width: 90%; height: auto; margin: 0 auto; display: block;">
                                             </div>
@@ -1280,13 +1283,13 @@
         // Solution message updates
         const solutionMessages = {
             multi: {
-                html: '<div style="background: linear-gradient(135deg, rgba(0,0,0,0.5), rgba(0,0,0,0.3)), url(\'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800\') center/cover; min-height: 200px; display: flex; align-items: center; justify-content: center; border-radius: 8px;"><div style="color: white; text-align: center; padding: 20px;"><h3 style="font-size: 24px; font-weight: 700; margin: 0;">Multi-Family Solutions</h3></div></div>'
+                html: '<div style="background: linear-gradient(135deg, rgba(0,0,0,0.4), rgba(0,0,0,0.2)), url(\'https://i.ibb.co/Hf74G6gJ/Adobe-Stock-1557359565-Preview.jpg\') center/cover; min-height: 200px; display: flex; align-items: center; justify-content: center; border-radius: 8px;"><div style="color: white; text-align: center; padding: 20px;"><h3 style="font-size: 26px; font-weight: 700; margin: 0; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">Multi-Family Solutions</h3></div></div>'
             },
             single: {
-                html: '<div style="background: linear-gradient(135deg, rgba(0,0,0,0.5), rgba(0,0,0,0.3)), url(\'https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=800\') center/cover; min-height: 200px; display: flex; align-items: center; justify-content: center; border-radius: 8px;"><div style="color: white; text-align: center; padding: 20px;"><h3 style="font-size: 24px; font-weight: 700; margin: 0;">Single-Family Solutions</h3></div></div>'
+                html: '<div style="background: linear-gradient(135deg, rgba(0,0,0,0.4), rgba(0,0,0,0.2)), url(\'https://i.ibb.co/1G21s0YX/Adobe-Stock-5136562.jpg\') center/cover; min-height: 200px; display: flex; align-items: center; justify-content: center; border-radius: 8px;"><div style="color: white; text-align: center; padding: 20px;"><h3 style="font-size: 26px; font-weight: 700; margin: 0; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">Single-Family Solutions</h3></div></div>'
             },
             commercial: {
-                html: '<div style="background: linear-gradient(135deg, rgba(0,0,0,0.5), rgba(0,0,0,0.3)), url(\'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800\') center/cover; min-height: 200px; display: flex; align-items: center; justify-content: center; border-radius: 8px;"><div style="color: white; text-align: center; padding: 20px;"><h3 style="font-size: 24px; font-weight: 700; margin: 0;">Commercial Solutions</h3></div></div>'
+                html: '<div style="background: linear-gradient(135deg, rgba(0,0,0,0.4), rgba(0,0,0,0.2)), url(\'https://i.ibb.co/67DXNctK/Adobe-Stock-1156207016-Preview.jpg\') center/cover; min-height: 200px; display: flex; align-items: center; justify-content: center; border-radius: 8px;"><div style="color: white; text-align: center; padding: 20px;"><h3 style="font-size: 26px; font-weight: 700; margin: 0; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">Commercial Solutions</h3></div></div>'
             },
             default: {
                 html: '<img src="https://cell-gate.com/wp-content/uploads/2025/09/Screenshot_2025-09-29_205305-removebg.png" alt="TPSA" style="max-width: 80%; height: auto;">'
@@ -1312,7 +1315,7 @@
                 html: '<div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 15px;"><img src="https://images.unsplash.com/photo-1558002038-1055907df827?w=400" style="width: 100%; height: 120px; object-fit: cover; border-radius: 6px;"><img src="https://images.unsplash.com/photo-1556656793-08538906a9f8?w=400" style="width: 100%; height: 120px; object-fit: cover; border-radius: 6px;"><img src="https://images.unsplash.com/photo-1590859808308-3d2d9c515b1a?w=400" style="width: 100%; height: 120px; object-fit: cover; border-radius: 6px;"><img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=400" style="width: 100%; height: 120px; object-fit: cover; border-radius: 6px;"></div><p style="text-align: center; font-size: 16px; font-weight: 600; color: #333;">Know who was on your property and when</p>'
             },
             control: {
-                html: '<div style="text-align: center;"><img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600" style="max-width: 100%; height: auto; border-radius: 8px; margin-bottom: 15px;"><p style="font-size: 14px; font-weight: 600; color: #333; margin-bottom: 15px;">Control your property from anywhere</p><div style="display: flex; justify-content: center; gap: 10px;"><a href="https://play.google.com/store/apps/details?id=com.celaccess&hl=en_US&pli=1" target="_blank"><img src="https://lh3.googleusercontent.com/q1k2l5CwMV31JdDXcpN4Ey7O43PxnjAuZBTmcHEwQxVuv_2wCE2gAAQMWxwNUC2FYEOnYgFPOpw6kmHJWuEGeIBLTj9CuxcOEeU8UXyzWJq4NJM3lg=s0" alt="Get it on Google Play" style="height: 35px;"></a><a href="https://apps.apple.com/us/app/cellgate-mobile-connect/id575775114" target="_blank"><img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store" style="height: 35px;"></a></div></div>'
+                html: '<div style="text-align: center;"><img src="https://i.ibb.co/mp4PjSS/Screen-Shot-2025-09-30-at-11-41-17-PM.png" style="max-width: 70%; height: auto; border-radius: 8px; margin-bottom: 15px;"><p style="font-size: 14px; font-weight: 600; color: #333; margin-bottom: 12px;">Control your property from anywhere</p><div style="display: flex; justify-content: center; gap: 8px;"><a href="https://play.google.com/store/apps/details?id=com.celaccess&hl=en_US&pli=1" target="_blank"><img src="https://lh3.googleusercontent.com/q1k2l5CwMV31JdDXcpN4Ey7O43PxnjAuZBTmcHEwQxVuv_2wCE2gAAQMWxwNUC2FYEOnYgFPOpw6kmHJWuEGeIBLTj9CuxcOEeU8UXyzWJq4NJM3lg=s0" alt="Get it on Google Play" style="height: 32px;"></a><a href="https://apps.apple.com/us/app/cellgate-mobile-connect/id575775114" target="_blank"><img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store" style="height: 32px;"></a></div></div>'
             },
             centralized: {
                 html: '<div style="text-align: center;"><img src="https://i.ibb.co/fGNPBvZS/CONNECTING-1.png" alt="TrueCloud Connect" style="max-width: 90%; height: auto; margin-bottom: 10px;"><p style="font-size: 14px; font-weight: 600; color: #333;">Single login for all products</p></div>'
