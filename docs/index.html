@@ -795,36 +795,43 @@
                             <a href="https://cell-gate.com/access-control-solutions/" class="nav-link has-dropdown">Solutions</a>
                             <div class="mega-menu solutions-menu">
                                 <div class="mega-menu-content">
-                                    <div class="menu-column" style="grid-column: 1 / -1;">
+                                    <div class="menu-column">
                                         <h3 class="column-title">By Market</h3>
-                                        <div style="display: flex; gap: 20px; justify-content: center; margin-bottom: 30px;">
-                                            <a href="https://cell-gate.com/watchman/multi-family/" class="solution-item" style="flex: 0 1 300px;">
+                                        <ul class="solution-list">
+                                            <a href="https://cell-gate.com/watchman/multi-family/" class="solution-item" 
+                                               onmouseover="updateSolutionMessage('multi')"
+                                               onmouseout="resetSolutionMessage()">
                                                 <div class="solution-icon">🏘️</div>
                                                 <div class="solution-text">
                                                     <span class="solution-name">Multi-Family</span>
                                                     <span class="solution-desc">Apartments, condos & gated communities</span>
                                                 </div>
                                             </a>
-                                            <a href="https://cell-gate.com/access-control-solutions/" class="solution-item" style="flex: 0 1 300px;">
-                                                <div class="solution-icon">🏢</div>
-                                                <div class="solution-text">
-                                                    <span class="solution-name">Commercial</span>
-                                                    <span class="solution-desc">Retail, Industrial & Business Properties</span>
-                                                </div>
-                                            </a>
-                                            <a href="https://cell-gate.com/access-control-solutions/singlefamily-old/" class="solution-item" style="flex: 0 1 300px;">
+                                            <a href="https://cell-gate.com/access-control-solutions/singlefamily-old/" class="solution-item"
+                                               onmouseover="updateSolutionMessage('single')"
+                                               onmouseout="resetSolutionMessage()">
                                                 <div class="solution-icon">🏠</div>
                                                 <div class="solution-text">
                                                     <span class="solution-name">Single-Family</span>
                                                     <span class="solution-desc">Residential homes and rural properties</span>
                                                 </div>
                                             </a>
-                                        </div>
-                                        <div style="text-align: center;">
-                                            <a href="https://cell-gate.com/">
-                                                <img src="https://cell-gate.com/wp-content/uploads/2025/10/LOGO-_WTP-BG_Horiz_TPSA-TL_STL.png" alt="TPSA Logo" style="max-width: 400px; height: auto;">
+                                            <a href="https://cell-gate.com/access-control-solutions/" class="solution-item"
+                                               onmouseover="updateSolutionMessage('commercial')"
+                                               onmouseout="resetSolutionMessage()">
+                                                <div class="solution-icon">🏢</div>
+                                                <div class="solution-text">
+                                                    <span class="solution-name">Commercial</span>
+                                                    <span class="solution-desc">Retail, Industrial & Business Properties</span>
+                                                </div>
                                             </a>
-                                        </div>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="menu-column">
+                                        <a href="https://cell-gate.com/" id="solutionMessage" class="solution-message">
+                                            <img src="https://cell-gate.com/wp-content/uploads/2025/09/Screenshot_2025-09-29_205305-removebg.png" alt="TPSA" style="max-width: 80%; height: auto;">
+                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -898,7 +905,7 @@
                                             <li class="product-item">
                                                 <a href="https://cell-gate.com/entria/" class="product-link">
                                                     <div class="product-name">Entria Single Door Controller</div>
-                                                    <div class="product-meta">Access control for one door/gate</div>
+                                                    <div class="product-meta">Access Control for One Door/Gate</div>
                                                 </a>
                                             </li>
                                         </ul>
@@ -926,11 +933,11 @@
                                         </ul>
                                     </div>
                                     
-                                    <!-- Column 3: Visitor Management -->
+                                    <!-- Column 3: Visitor Management & Tagline -->
                                     <div class="menu-column">
                                         <h3 class="column-title">Visitor Management</h3>
                                         
-                                        <div style="background: url('https://cell-gate.com/wp-content/uploads/2025/10/20220818_cellgate_422.jpg') center/cover; 
+                                        <div style="background: url('https://cell-gate.com/wp-content/uploads/2025/10/20220818_cellgate_426.jpg') center/cover; 
                                                     border: 2px solid #52A6A5; border-radius: 8px; padding: 30px 20px; margin-bottom: 15px; 
                                                     box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
                                             <h4 style="font-size: 15px; font-weight: 700; color: white; margin-bottom: 12px; text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">Access Credentials</h4>
@@ -946,6 +953,10 @@
                                                 </ul>
                                             </div>
                                         </div>
+                                        
+                                        <a href="https://cell-gate.com/" style="background: #f5f5f5; border: 3px solid #52A6A5; border-radius: 8px; padding: 25px; color: #333; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.1); display: flex; align-items: center; justify-content: center; text-decoration: none; transition: all 0.3s;">
+                                            <img src="https://cell-gate.com/wp-content/uploads/2025/09/Screenshot_2025-09-29_205305-removebg.png" alt="Total Property Security Access" style="max-width: 90%; height: auto;">
+                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -955,40 +966,39 @@
                         <li class="nav-item">
                             <a href="https://cell-gate.com/how-it-works/" class="nav-link has-dropdown">Why CellGate</a>
                             <div class="mega-menu why-menu">
-                                <div class="mega-menu-content">
-                                    <div style="grid-column: 1 / -1; margin-bottom: 20px;">
-                                        <a href="https://cell-gate.com/" class="tpsa-prominent-link">
+                                <div class="mega-menu-content" id="whyMenuContainer">
+                                    <div class="menu-column">
+                                        <a href="https://cell-gate.com/" class="tpsa-prominent-link" 
+                                           onmouseover="updateWhyMessage('tpsa')"
+                                           onmouseout="resetWhyMessage()">
                                             TOTAL PROPERTY SECURITY ACCESS →
                                         </a>
-                                    </div>
-                                    
-                                    <div class="menu-column">
+                                        
                                         <ul class="support-links">
                                             <li>
-                                                <a href="https://cell-gate.com/how-it-works/" class="support-link">
+                                                <a href="https://cell-gate.com/how-it-works/" class="support-link benefit-link"
+                                                   data-feature="howItWorks">
                                                     <span class="support-icon">🔍</span>
                                                     How It Works
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="https://cell-gate.com/cellgate-app/" class="support-link">
+                                                <a href="https://cell-gate.com/cellgate-app/" class="support-link benefit-link"
+                                                   data-feature="control">
                                                     <span class="support-icon">📱</span>
                                                     CellGate App
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="https://cell-gate.com/truecloud/" class="support-link">
+                                                <a href="https://cell-gate.com/truecloud/" class="support-link benefit-link"
+                                                   data-feature="centralized">
                                                     <span class="support-icon">☁️</span>
                                                     TrueCloud Connect
                                                 </a>
                                             </li>
-                                        </ul>
-                                    </div>
-                                    
-                                    <div class="menu-column">
-                                        <ul class="support-links">
                                             <li>
-                                                <a href="https://cell-gate.com/gold-key-service/" class="support-link">
+                                                <a href="https://cell-gate.com/gold-key-service/" class="support-link benefit-link"
+                                                   data-feature="support">
                                                     <span class="support-icon">🔑</span>
                                                     Gold Key Service/Support Services
                                                 </a>
@@ -1002,10 +1012,12 @@
                                         </ul>
                                     </div>
                                     
-                                    <div style="grid-column: 1 / -1; text-align: center; margin-top: 20px;">
-                                        <a href="https://cell-gate.com/">
-                                            <img src="https://cell-gate.com/wp-content/uploads/2025/10/LOGO-_WTP-BG_Horiz_TPSA-TL_STL.png" alt="TPSA Logo" style="max-width: 400px; height: auto;">
-                                        </a>
+                                    <div class="menu-column">
+                                        <div id="whyMessage" class="featured-box" style="background: #f5f5f5; padding: 25px; border-radius: 8px; border: 3px solid #52A6A5; cursor: pointer;" onclick="window.location.href='https://cell-gate.com/'">
+                                            <div class="featured-desc" style="text-align: center;">
+                                                <img src="https://cell-gate.com/wp-content/uploads/2025/09/Screenshot_2025-09-29_205305-removebg.png" alt="TPSA" style="max-width: 90%; height: auto; margin: 0 auto; display: block;">
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -1277,6 +1289,85 @@
                 document.body.style.overflow = '';
             }
         }
+        
+        // Solution message updates
+        const solutionMessages = {
+            multi: {
+                html: '<div style="background: linear-gradient(135deg, rgba(0,0,0,0.4), rgba(0,0,0,0.2)), url(\'https://cell-gate.com/wp-content/uploads/2025/10/AdobeStock_1557359565_Preview.jpeg\') center/cover; min-height: 200px; display: flex; align-items: center; justify-content: center; border-radius: 8px;"><div style="color: white; text-align: center; padding: 20px;"><h3 style="font-size: 26px; font-weight: 700; margin: 0; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">Multi-Family Solutions</h3></div></div>'
+            },
+            single: {
+                html: '<div style="background: linear-gradient(135deg, rgba(0,0,0,0.4), rgba(0,0,0,0.2)), url(\'https://cell-gate.com/wp-content/uploads/2025/10/AdobeStock_5136562.jpeg\') center/cover; min-height: 200px; display: flex; align-items: center; justify-content: center; border-radius: 8px;"><div style="color: white; text-align: center; padding: 20px;"><h3 style="font-size: 26px; font-weight: 700; margin: 0; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">Single-Family Solutions</h3></div></div>'
+            },
+            commercial: {
+                html: '<div style="background: linear-gradient(135deg, rgba(0,0,0,0.4), rgba(0,0,0,0.2)), url(\'https://cell-gate.com/wp-content/uploads/2025/10/AdobeStock_1156207016_Preview.jpeg\') center/cover; min-height: 200px; display: flex; align-items: center; justify-content: center; border-radius: 8px;"><div style="color: white; text-align: center; padding: 20px;"><h3 style="font-size: 26px; font-weight: 700; margin: 0; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">Commercial Solutions</h3></div></div>'
+            },
+            default: {
+                html: '<img src="https://cell-gate.com/wp-content/uploads/2025/09/Screenshot_2025-09-29_205305-removebg.png" alt="TPSA" style="max-width: 80%; height: auto;">'
+            }
+        };
+        
+        function updateSolutionMessage(type) {
+            const messageBox = document.getElementById('solutionMessage');
+            const message = solutionMessages[type];
+            messageBox.innerHTML = message.html;
+        }
+        
+        function resetSolutionMessage() {
+            updateSolutionMessage('default');
+        }
+        
+        // Why CellGate message updates
+        const whyMessages = {
+            tpsa: {
+                html: '<div style="text-align: center;"><img src="https://cell-gate.com/wp-content/uploads/2025/09/Screenshot_2025-09-29_205305-removebg.png" alt="TPSA" style="max-width: 90%; height: auto; margin: 0 auto; display: block;"></div>'
+            },
+            howItWorks: {
+                html: '<div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 15px;"><img src="https://images.unsplash.com/photo-1558002038-1055907df827?w=400" style="width: 100%; height: 120px; object-fit: cover; border-radius: 6px;"><img src="https://images.unsplash.com/photo-1556656793-08538906a9f8?w=400" style="width: 100%; height: 120px; object-fit: cover; border-radius: 6px;"><img src="https://images.unsplash.com/photo-1590859808308-3d2d9c515b1a?w=400" style="width: 100%; height: 120px; object-fit: cover; border-radius: 6px;"><img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=400" style="width: 100%; height: 120px; object-fit: cover; border-radius: 6px;"></div><p style="text-align: center; font-size: 14px; font-weight: 600; color: #333;">Know who was on your property and when</p>'
+            },
+            control: {
+                html: '<div style="text-align: center;"><img src="https://i.ibb.co/HpryLZYX/Screen-Shot-2025-09-30-at-11-35-54-PM.png" style="max-width: 70%; height: auto; border-radius: 8px; margin-bottom: 15px;"><p style="font-size: 14px; font-weight: 600; color: #333; margin-bottom: 12px;">Control your property from anywhere</p><div style="display: flex; justify-content: center; gap: 8px;"><a href="https://play.google.com/store/apps/details?id=com.celaccess&hl=en_US&pli=1" target="_blank"><img src="https://lh3.googleusercontent.com/q1k2l5CwMV31JdDXcpN4Ey7O43PxnjAuZBTmcHEwQxVuv_2wCE2gAAQMWxwNUC2FYEOnYgFPOpw6kmHJWuEGeIBLTj9CuxcOEeU8UXyzWJq4NJM3lg=s0" alt="Get it on Google Play" style="height: 32px;"></a><a href="https://apps.apple.com/us/app/cellgate-mobile-connect/id575775114" target="_blank"><img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store" style="height: 32px;"></a></div></div>'
+            },
+            centralized: {
+                html: '<div style="text-align: center;"><img src="https://cell-gate.com/wp-content/uploads/2025/10/Untitled-design-3.png" alt="TrueCloud Connect" style="max-width: 90%; height: auto; margin-bottom: 8px;"><p style="font-size: 14px; font-weight: 600; color: #333;">Single login for all products</p></div>'
+            },
+            support: {
+                html: '<div style="text-align: center;"><img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=600" style="max-width: 100%; height: auto; border-radius: 8px; margin-bottom: 15px;"><p style="font-size: 14px; font-weight: 600; color: #333;">Expert help that keeps you running</p></div>'
+            },
+            default: {
+                html: '<div style="text-align: center;"><img src="https://cell-gate.com/wp-content/uploads/2025/09/Screenshot_2025-09-29_205305-removebg.png" alt="TPSA" style="max-width: 90%; height: auto; margin: 0 auto; display: block;"></div>'
+            }
+        };
+        
+        function updateWhyMessage(type) {
+            const messageBox = document.getElementById('whyMessage');
+            const message = whyMessages[type] || whyMessages.default;
+            
+            messageBox.style.cssText = 'background: #f5f5f5; padding: 25px; border-radius: 8px; color: #333; border: 3px solid #52A6A5;';
+            messageBox.innerHTML = message.html;
+        }
+        
+        function resetWhyMessage() {
+            updateWhyMessage('default');
+        }
+        
+        // Set up Why CellGate hover events
+        document.addEventListener('DOMContentLoaded', function() {
+            const benefitLinks = document.querySelectorAll('.benefit-link');
+            
+            benefitLinks.forEach(link => {
+                link.addEventListener('mouseenter', function() {
+                    const feature = this.getAttribute('data-feature');
+                    updateWhyMessage(feature);
+                });
+            });
+            
+            const whyMenuContainer = document.getElementById('whyMenuContainer');
+            if (whyMenuContainer) {
+                whyMenuContainer.addEventListener('mouseleave', function() {
+                    resetWhyMessage();
+                });
+            }
+        });
     </script>
 </body>
 </html>
