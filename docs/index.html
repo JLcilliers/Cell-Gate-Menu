@@ -254,21 +254,30 @@
         
         .about-menu .support-links {
             display: flex;
+            flex-direction: row;
             justify-content: center;
-            gap: 30px;
-            flex-wrap: wrap;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: nowrap;
             margin: 0 !important;
             padding: 0 !important;
+            list-style: none;
+        }
+        
+        .about-menu .support-links li {
+            display: flex;
         }
         
         .about-menu .support-link {
             flex: 0 1 auto;
             min-width: 150px;
-            padding: 8px 10px;
-            margin-bottom: 4px;
+            padding: 8px 15px;
+            margin-bottom: 0;
             font-size: 14px;
             white-space: nowrap;
-            display: block;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
         
         .dealers-menu .mega-menu {
@@ -833,11 +842,6 @@
                                                 </div>
                                             </a>
                                         </ul>
-                                        <div style="text-align: center; margin-top: 30px;">
-                                            <a href="https://cell-gate.com/">
-                                                <img src="https://cell-gate.com/wp-content/uploads/2025/10/Untitled-design-6.png" alt="TPSA Logo" style="max-width: 100%; height: auto;">
-                                            </a>
-                                        </div>
                                     </div>
                                     
                                     <div class="menu-column">
@@ -845,6 +849,11 @@
                                             <img src="https://cell-gate.com/wp-content/uploads/2025/06/HOA.jpeg" alt="Solutions" style="max-width: 100%; height: auto; border-radius: 8px;">
                                         </a>
                                     </div>
+                                </div>
+                                <div style="text-align: center; padding: 20px 40px 30px;">
+                                    <a href="https://cell-gate.com/">
+                                        <img src="https://cell-gate.com/wp-content/uploads/2025/10/Untitled-design-6.png" alt="TPSA Logo" style="max-width: 400px; height: auto;">
+                                    </a>
                                 </div>
                             </div>
                         </li>
