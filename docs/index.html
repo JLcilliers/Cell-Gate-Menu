@@ -174,8 +174,9 @@
             max-width: 1200px;
         }
         
-        /* Override for About menu specifically */
-        .about-menu {
+        /* Override for About and Support menus specifically */
+        .about-menu,
+        .support-menu {
             min-width: auto !important;
             width: auto !important;
             max-width: none !important;
@@ -207,26 +208,30 @@
             grid-template-columns: repeat(2, 1fr);
         }
         
-        .support-menu .mega-menu-content {
+        .support-menu .mega-menu-content,
+        .dealers-menu .mega-menu-content {
             display: block;
             text-align: center;
         }
         
-        .support-menu .column-title {
+        .support-menu .column-title,
+        .dealers-menu .column-title {
             text-align: center;
             border-bottom: 2px solid #52A6A5;
             padding-bottom: 10px;
             margin-bottom: 20px;
         }
         
-        .support-menu .support-links {
+        .support-menu .support-links,
+        .dealers-menu .support-links {
             display: flex;
             justify-content: center;
             gap: 30px;
             flex-wrap: wrap;
         }
         
-        .support-menu .support-link {
+        .support-menu .support-link,
+        .dealers-menu .support-link {
             flex: 0 1 auto;
             min-width: 200px;
         }
@@ -281,12 +286,8 @@
         }
         
         .dealers-menu .mega-menu {
-            min-width: 700px;
-            max-width: 700px;
-        }
-        
-        .dealers-menu .mega-menu-content {
-            grid-template-columns: 1fr 1.2fr;
+            min-width: auto;
+            max-width: none;
         }
         
         /* Column Styles */
@@ -475,29 +476,24 @@
             font-size: 16px;
         }
         
-        /* TPSA Prominent Link */
+        /* TPSA Prominent Link - Now an image */
         .tpsa-prominent-link {
             display: block;
-            padding: 15px 20px;
             margin-bottom: 20px;
-            background: linear-gradient(135deg, #52A6A5 0%, #3E8281 100%);
-            color: white !important;
             text-decoration: none;
-            border-radius: 8px;
-            font-size: 14px;
-            font-weight: 700;
-            text-align: center;
             transition: all 0.3s;
-            box-shadow: 0 4px 12px rgba(82,166,165,0.3);
-            border: 3px solid #52A6A5;
-            letter-spacing: 2px;
-            text-transform: uppercase;
+        }
+        
+        .tpsa-prominent-link img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 8px;
         }
         
         .tpsa-prominent-link:hover {
             transform: translateY(-3px);
             box-shadow: 0 6px 20px rgba(82,166,165,0.5);
-            background: linear-gradient(135deg, #3E8281 0%, #2D6160 100%);
         }
         
         /* Featured Boxes */
@@ -976,7 +972,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div style="text-align: center; padding: 20px 40px 30px;">
+                                <div style="text-align: center; padding: 10px 40px 30px;">
                                     <a href="https://cell-gate.com/">
                                         <img src="https://cell-gate.com/wp-content/uploads/2025/10/Untitled-design-6.png" alt="TPSA Logo" style="max-width: 400px; height: auto;">
                                     </a>
@@ -984,7 +980,7 @@
                             </div>
                         </li>
                         
-                        <!-- WHY CELLGATE MENU (NOW WITH BLOG) -->
+                        <!-- WHY CELLGATE MENU -->
                         <li class="nav-item">
                             <a href="https://cell-gate.com/how-it-works/" class="nav-link has-dropdown">Why CellGate</a>
                             <div class="mega-menu why-menu">
@@ -993,7 +989,7 @@
                                         <a href="https://cell-gate.com/" class="tpsa-prominent-link" 
                                            onmouseover="updateWhyMessage('tpsa')"
                                            onmouseout="resetWhyMessage()">
-                                            TOTAL PROPERTY SECURITY ACCESS →
+                                            <img src="https://cell-gate.com/wp-content/uploads/2025/10/Untitled-design-12.png" alt="Total Property Security Access">
                                         </a>
                                         
                                         <ul class="support-links">
@@ -1034,18 +1030,14 @@
                                         </ul>
                                     </div>
                                     
-                                    <div class="menu-column">
-                                        <div id="whyMessage" class="featured-box" style="background: #f5f5f5; padding: 25px; border-radius: 8px; border: 3px solid #52A6A5; cursor: pointer;" onclick="window.location.href='https://cell-gate.com/'">
-                                            <div class="featured-desc" style="text-align: center;">
-                                                <img src="https://cell-gate.com/wp-content/uploads/2025/10/LOGO-_WTP-BG_Stack_TPSA-TL-STL.png" alt="TPSA" style="max-width: 90%; height: auto; margin: 0 auto; display: block;">
-                                            </div>
-                                        </div>
+                                    <div class="menu-column" id="whyMessage" style="display: none;">
+                                        <!-- Content will be dynamically inserted here on hover -->
                                     </div>
                                 </div>
                             </div>
                         </li>
                         
-                        <!-- ABOUT US MENU (NOW WITH NEWS) -->
+                        <!-- ABOUT US MENU -->
                         <li class="nav-item">
                             <a href="https://cell-gate.com/about-us/" class="nav-link has-dropdown">About Us</a>
                             <div class="mega-menu about-menu">
@@ -1082,7 +1074,7 @@
                             </div>
                         </li>
                         
-                        <!-- SUPPORT MENU (RENAMED FROM RESOURCES, NEWS & UPDATES COLUMN REMOVED) -->
+                        <!-- SUPPORT MENU -->
                         <li class="nav-item">
                             <a href="https://cell-gate.com/resources/" class="nav-link has-dropdown">Support</a>
                             <div class="mega-menu support-menu">
@@ -1146,24 +1138,6 @@
                                                 </a>
                                             </li>
                                         </ul>
-                                    </div>
-                                    
-                                    <div class="menu-column">
-                                        <a href="https://cell-gate.com/dealer-inquiries/" style="display: block; text-decoration: none;">
-                                            <div class="featured-box" style="background: linear-gradient(135deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3)), 
-                                                        url('https://cell-gate.com/wp-content/uploads/2025/10/20220818_cellgate_427.jpg') center/cover; 
-                                                        color: white; padding: 50px 25px; border-radius: 8px; margin-top: 20px; 
-                                                        box-shadow: 0 4px 12px rgba(0,102,204,0.2); display: flex; flex-direction: column; 
-                                                        justify-content: center; align-items: center; text-align: center; min-height: 200px; 
-                                                        transition: transform 0.3s, box-shadow 0.3s;">
-                                                <div style="font-size: 22px; font-weight: 700; margin-bottom: 25px; text-shadow: 2px 2px 4px rgba(0,0,0,0.7);">
-                                                    Partner With Us
-                                                </div>
-                                                <div style="font-size: 16px; line-height: 1.6; text-shadow: 2px 2px 4px rgba(0,0,0,0.7);">
-                                                    Join our network of successful dealers nationwide.
-                                                </div>
-                                            </div>
-                                        </a>
                                     </div>
                                 </div>
                                 <div style="text-align: center; padding: 20px 40px 30px;">
@@ -1364,9 +1338,6 @@
         
         // Why CellGate message updates
         const whyMessages = {
-            tpsa: {
-                html: '<div style="text-align: center;"><img src="https://cell-gate.com/wp-content/uploads/2025/10/LOGO-_WTP-BG_Stack_TPSA-TL-STL.png" alt="TPSA" style="max-width: 90%; height: auto; margin: 0 auto; display: block;"></div>'
-            },
             howItWorks: {
                 html: '<div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 15px;"><img src="https://cell-gate.com/wp-content/uploads/2025/10/Untitled-100-x-100-px.png" style="width: 100%; height: auto; border-radius: 6px;"><img src="https://cell-gate.com/wp-content/uploads/2025/10/Untitled-100-x-100-px-2.png" style="width: 100%; height: auto; border-radius: 6px;"><img src="https://cell-gate.com/wp-content/uploads/2025/10/Untitled-100-x-100-px-1.png" style="width: 100%; height: auto; border-radius: 6px;"><img src="https://cell-gate.com/wp-content/uploads/2025/10/Untitled-100-x-100-px-3.png" style="width: 100%; height: auto; border-radius: 6px;"></div><p style="text-align: center; font-size: 14px; font-weight: 600; color: #333;">Know who was on your property and when</p>'
             },
@@ -1378,22 +1349,24 @@
             },
             support: {
                 html: '<div style="text-align: center;"><img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=600" style="max-width: 100%; height: auto; border-radius: 8px; margin-bottom: 15px;"><p style="font-size: 14px; font-weight: 600; color: #333;">Expert help that keeps you running</p></div>'
-            },
-            default: {
-                html: '<div style="text-align: center;"><img src="https://cell-gate.com/wp-content/uploads/2025/10/LOGO-_WTP-BG_Stack_TPSA-TL-STL.png" alt="TPSA" style="max-width: 90%; height: auto; margin: 0 auto; display: block;"></div>'
             }
         };
         
         function updateWhyMessage(type) {
             const messageBox = document.getElementById('whyMessage');
-            const message = whyMessages[type] || whyMessages.default;
+            const message = whyMessages[type];
             
-            messageBox.style.cssText = 'background: #f5f5f5; padding: 25px; border-radius: 8px; color: #333; border: 3px solid #52A6A5;';
-            messageBox.innerHTML = message.html;
+            if (message) {
+                messageBox.style.display = 'block';
+                messageBox.style.cssText = 'display: block; background: #f5f5f5; padding: 25px; border-radius: 8px; color: #333; border: 3px solid #52A6A5;';
+                messageBox.innerHTML = message.html;
+            }
         }
         
         function resetWhyMessage() {
-            updateWhyMessage('default');
+            const messageBox = document.getElementById('whyMessage');
+            messageBox.style.display = 'none';
+            messageBox.innerHTML = '';
         }
         
         // Set up Why CellGate hover events
@@ -1404,6 +1377,10 @@
                 link.addEventListener('mouseenter', function() {
                     const feature = this.getAttribute('data-feature');
                     updateWhyMessage(feature);
+                });
+                
+                link.addEventListener('mouseleave', function() {
+                    resetWhyMessage();
                 });
             });
             
