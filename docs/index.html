@@ -174,12 +174,23 @@
             max-width: 1200px;
         }
         
-        /* Override for About and Support menus specifically */
+        /* Override for About, Support, and Dealers menus */
         .about-menu,
-        .support-menu {
+        .support-menu,
+        .dealers-menu {
             min-width: auto !important;
             width: auto !important;
             max-width: none !important;
+        }
+        
+        /* Why CellGate specific - starts narrow */
+        .why-menu {
+            min-width: 400px;
+            transition: all 0.3s ease;
+        }
+        
+        .why-menu.expanded {
+            min-width: 900px;
         }
         
         .nav-item:hover .mega-menu {
@@ -202,20 +213,28 @@
         
         .products-menu .mega-menu-content {
             grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
         }
         
         .why-menu .mega-menu-content {
+            grid-template-columns: 1fr;
+            transition: all 0.3s ease;
+        }
+        
+        .why-menu.expanded .mega-menu-content {
             grid-template-columns: repeat(2, 1fr);
         }
         
         .support-menu .mega-menu-content,
-        .dealers-menu .mega-menu-content {
+        .dealers-menu .mega-menu-content,
+        .about-menu .mega-menu-content {
             display: block;
             text-align: center;
         }
         
         .support-menu .column-title,
-        .dealers-menu .column-title {
+        .dealers-menu .column-title,
+        .about-menu .column-title {
             text-align: center;
             border-bottom: 2px solid #52A6A5;
             padding-bottom: 10px;
@@ -223,7 +242,8 @@
         }
         
         .support-menu .support-links,
-        .dealers-menu .support-links {
+        .dealers-menu .support-links,
+        .about-menu .support-links {
             display: flex;
             justify-content: center;
             gap: 30px;
@@ -231,7 +251,8 @@
         }
         
         .support-menu .support-link,
-        .dealers-menu .support-link {
+        .dealers-menu .support-link,
+        .about-menu .support-link {
             flex: 0 1 auto;
             min-width: 200px;
         }
@@ -239,9 +260,6 @@
         /* About menu specific layout */
         .about-menu .mega-menu-content {
             padding: 25px 30px !important;
-            display: block !important;
-            grid-template-columns: none !important;
-            gap: 0 !important;
         }
         
         .about-menu .menu-column {
@@ -250,19 +268,12 @@
         }
         
         .about-menu .column-title {
-            text-align: center;
-            border-bottom: 2px solid #52A6A5;
-            padding-bottom: 10px;
-            margin-bottom: 20px;
             font-size: 13px;
         }
         
         .about-menu .support-links {
-            display: flex;
             flex-direction: row;
-            justify-content: center;
             align-items: center;
-            gap: 20px;
             flex-wrap: nowrap;
             margin: 0 !important;
             padding: 0 !important;
@@ -274,8 +285,6 @@
         }
         
         .about-menu .support-link {
-            flex: 0 1 auto;
-            min-width: 150px;
             padding: 8px 15px;
             margin-bottom: 0;
             font-size: 14px;
@@ -283,11 +292,6 @@
             display: flex;
             align-items: center;
             gap: 8px;
-        }
-        
-        .dealers-menu .mega-menu {
-            min-width: auto;
-            max-width: none;
         }
         
         /* Column Styles */
@@ -301,7 +305,7 @@
             color: #1A1A1A;
             text-transform: uppercase;
             letter-spacing: 1px;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             padding-bottom: 10px;
             border-bottom: 2px solid #52A6A5;
         }
@@ -311,8 +315,8 @@
         }
         
         .product-item {
-            margin-bottom: 12px;
-            padding: 10px;
+            margin-bottom: 8px;
+            padding: 8px;
             border-radius: 4px;
             transition: all 0.2s;
             cursor: pointer;
@@ -846,7 +850,7 @@
                                         </a>
                                     </div>
                                 </div>
-                                <div style="text-align: center; padding: 20px 40px 30px;">
+                                <div style="text-align: center; padding: 5px 40px 20px;">
                                     <a href="https://cell-gate.com/">
                                         <img src="https://cell-gate.com/wp-content/uploads/2025/10/Untitled-design-6.png" alt="TPSA Logo" style="max-width: 400px; height: auto;">
                                     </a>
@@ -862,7 +866,7 @@
                                     <!-- Column 1: Video Intercom -->
                                     <div class="menu-column">
                                         <h3 class="column-title">Video Intercom</h3>
-                                        <h4 style="font-size: 14px; color: #666; margin: 15px 0 10px; font-weight: 600;">Live Video Telephone Entry</h4>
+                                        <h4 style="font-size: 13px; color: #666; margin: 10px 0 8px; font-weight: 600;">Live Video Telephone Entry</h4>
                                         <ul class="product-list">
                                             <li class="product-item">
                                                 <a href="https://cell-gate.com/watchman/watchman-w410/" class="product-link">
@@ -901,7 +905,7 @@
                                     <div class="menu-column">
                                         <h3 class="column-title">Access Control</h3>
                                         
-                                        <h4 style="font-size: 14px; color: #666; margin: 15px 0 10px; font-weight: 600;">Wireless Multi-Point Access Control</h4>
+                                        <h4 style="font-size: 13px; color: #666; margin: 10px 0 8px; font-weight: 600;">Wireless Multi-Point Access Control</h4>
                                         <ul class="product-list">
                                             <li class="product-item">
                                                 <a href="https://cell-gate.com/omnipoint/" class="product-link">
@@ -911,7 +915,7 @@
                                             </li>
                                         </ul>
                                         
-                                        <h4 style="font-size: 14px; color: #666; margin: 25px 0 10px; font-weight: 600;">Wireless & Wired Controllers</h4>
+                                        <h4 style="font-size: 13px; color: #666; margin: 15px 0 8px; font-weight: 600;">Wireless & Wired Controllers</h4>
                                         <ul class="product-list">
                                             <li class="product-item">
                                                 <a href="https://cell-gate.com/entria/four-door-controller/" class="product-link">
@@ -927,7 +931,7 @@
                                             </li>
                                         </ul>
                                         
-                                        <h4 style="font-size: 14px; color: #666; margin: 25px 0 10px; font-weight: 600;">Readers & Credentials</h4>
+                                        <h4 style="font-size: 13px; color: #666; margin: 15px 0 8px; font-weight: 600;">Readers & Credentials</h4>
                                         <ul class="product-list">
                                             <li class="product-item">
                                                 <a href="https://cell-gate.com/readers/infinity/" class="product-link">
@@ -955,24 +959,24 @@
                                         <h3 class="column-title">Visitor Management</h3>
                                         
                                         <div style="background: url('https://cell-gate.com/wp-content/uploads/2025/10/20220818_cellgate_527.jpg') center/cover; 
-                                                    border: 2px solid #52A6A5; border-radius: 8px; padding: 30px 20px; margin-bottom: 15px; 
+                                                    border: 2px solid #52A6A5; border-radius: 8px; padding: 25px 15px; margin-bottom: 10px; 
                                                     box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
-                                            <h4 style="font-size: 15px; font-weight: 700; color: white; margin-bottom: 12px; text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">Access Credentials</h4>
+                                            <h4 style="font-size: 14px; font-weight: 700; color: white; margin-bottom: 10px; text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">Access Credentials</h4>
                                             <div style="margin-left: 15px;">
-                                                <h5 style="font-size: 14px; font-weight: 600; color: white; margin: 10px 0 8px; text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">Visitors</h5>
+                                                <h5 style="font-size: 13px; font-weight: 600; color: white; margin: 8px 0 6px; text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">Visitors</h5>
                                                 <ul style="list-style: none; margin-left: 15px; padding: 0;">
-                                                    <li style="margin: 5px 0; color: white; font-size: 13px; text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">QR Codes</li>
-                                                    <li style="margin: 5px 0; color: white; font-size: 13px; text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">PIN Codes</li>
+                                                    <li style="margin: 4px 0; color: white; font-size: 12px; text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">QR Codes</li>
+                                                    <li style="margin: 4px 0; color: white; font-size: 12px; text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">PIN Codes</li>
                                                 </ul>
-                                                <h5 style="font-size: 14px; font-weight: 600; color: white; margin: 15px 0 8px; text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">Residents and Employees</h5>
+                                                <h5 style="font-size: 13px; font-weight: 600; color: white; margin: 10px 0 6px; text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">Residents and Employees</h5>
                                                 <ul style="list-style: none; margin-left: 15px; padding: 0;">
-                                                    <li style="margin: 5px 0; color: white; font-size: 13px; text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">Bluetooth Contactless</li>
+                                                    <li style="margin: 4px 0; color: white; font-size: 12px; text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">Bluetooth Contactless</li>
                                                 </ul>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div style="text-align: center; padding: 10px 40px 30px;">
+                                <div style="text-align: center; padding: 5px 40px 20px;">
                                     <a href="https://cell-gate.com/">
                                         <img src="https://cell-gate.com/wp-content/uploads/2025/10/Untitled-design-6.png" alt="TPSA Logo" style="max-width: 400px; height: auto;">
                                     </a>
@@ -983,12 +987,10 @@
                         <!-- WHY CELLGATE MENU -->
                         <li class="nav-item">
                             <a href="https://cell-gate.com/how-it-works/" class="nav-link has-dropdown">Why CellGate</a>
-                            <div class="mega-menu why-menu">
+                            <div class="mega-menu why-menu" id="whyMegaMenu">
                                 <div class="mega-menu-content" id="whyMenuContainer">
                                     <div class="menu-column">
-                                        <a href="https://cell-gate.com/" class="tpsa-prominent-link" 
-                                           onmouseover="updateWhyMessage('tpsa')"
-                                           onmouseout="resetWhyMessage()">
+                                        <a href="https://cell-gate.com/" class="tpsa-prominent-link">
                                             <img src="https://cell-gate.com/wp-content/uploads/2025/10/Untitled-design-12.png" alt="Total Property Security Access">
                                         </a>
                                         
@@ -1336,7 +1338,7 @@
             updateSolutionMessage('default');
         }
         
-        // Why CellGate message updates
+        // Why CellGate message updates with expansion
         const whyMessages = {
             howItWorks: {
                 html: '<div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 15px;"><img src="https://cell-gate.com/wp-content/uploads/2025/10/Untitled-100-x-100-px.png" style="width: 100%; height: auto; border-radius: 6px;"><img src="https://cell-gate.com/wp-content/uploads/2025/10/Untitled-100-x-100-px-2.png" style="width: 100%; height: auto; border-radius: 6px;"><img src="https://cell-gate.com/wp-content/uploads/2025/10/Untitled-100-x-100-px-1.png" style="width: 100%; height: auto; border-radius: 6px;"><img src="https://cell-gate.com/wp-content/uploads/2025/10/Untitled-100-x-100-px-3.png" style="width: 100%; height: auto; border-radius: 6px;"></div><p style="text-align: center; font-size: 14px; font-weight: 600; color: #333;">Know who was on your property and when</p>'
@@ -1354,19 +1356,23 @@
         
         function updateWhyMessage(type) {
             const messageBox = document.getElementById('whyMessage');
+            const megaMenu = document.getElementById('whyMegaMenu');
             const message = whyMessages[type];
             
             if (message) {
                 messageBox.style.display = 'block';
                 messageBox.style.cssText = 'display: block; background: #f5f5f5; padding: 25px; border-radius: 8px; color: #333; border: 3px solid #52A6A5;';
                 messageBox.innerHTML = message.html;
+                megaMenu.classList.add('expanded');
             }
         }
         
         function resetWhyMessage() {
             const messageBox = document.getElementById('whyMessage');
+            const megaMenu = document.getElementById('whyMegaMenu');
             messageBox.style.display = 'none';
             messageBox.innerHTML = '';
+            megaMenu.classList.remove('expanded');
         }
         
         // Set up Why CellGate hover events
@@ -1380,7 +1386,7 @@
                 });
                 
                 link.addEventListener('mouseleave', function() {
-                    resetWhyMessage();
+                    // Don't reset immediately to allow hovering over the right column
                 });
             });
             
