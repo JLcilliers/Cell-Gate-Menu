@@ -119,7 +119,7 @@
     .support-menu .support-link:hover,
     .dealers-menu .support-link:hover{background:#E8F5F3;color:#0066CC;transform:translateX(3px);}
 
-    /* Column styles shared */
+    /* Product items */
     .menu-column{min-width:200px;}
     .product-list{list-style:none;}
     .product-item{margin-bottom:8px;padding:8px;border-radius:4px;transition:all .2s;cursor:pointer;border-left:3px solid transparent;}
@@ -397,7 +397,7 @@
                     </h3>
 
                     <div style="background:url('https://cell-gate.com/wp-content/uploads/2025/10/20220818_cellgate_527.jpg') center/cover;border:2px solid #52A6A5;border-radius:8px;padding:22px 15px;margin-bottom:10px;box-shadow:0 4px 6px rgba(0,0,0,.1);">
-                      <!-- Removed the inner heading that said Access Credentials per request -->
+                      <!-- inner heading removed per request -->
                       <div style="margin-left:15px;">
                         <h5 style="font-size:13px;font-weight:700;color:#fff;margin:0 0 6px;text-shadow:2px 2px 4px rgba(0,0,0,.8);">Visitors</h5>
                         <ul style="list-style:none;margin-left:15px;padding:0;">
@@ -674,14 +674,6 @@
     }
 
     function restoreWhyDefault(){
-      // If on blog, default to blog image, else the dual network image
-      try{
-        const path=(window.location && window.location.pathname) ? window.location.pathname : '';
-        if(path.indexOf('/blog') !== -1){
-          setWhyPreviewHTML(whyMessages.blog.html);
-          return;
-        }
-      }catch(e){}
       setWhyPreviewHTML(whyMessages.default.html);
     }
 
