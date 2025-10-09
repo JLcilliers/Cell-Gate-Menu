@@ -68,15 +68,19 @@
     .solutions-menu .mega-menu-content{grid-template-columns:repeat(2,1fr);}
     .products-menu .mega-menu-content{grid-template-columns:repeat(3,1fr);gap:25px;}
 
-    /* Why CellGate - default is tight single column. Expanded adds preview column. */
-    .why-menu .mega-menu-content{grid-template-columns:1fr;transition:all .3s ease;}
-    .why-menu.expanded .mega-menu-content{grid-template-columns:repeat(2,1fr);}
+    /* WHY CELLGATE - default is compact single column - no preview space */
+    .why-menu .mega-menu-content{grid-template-columns:1fr;align-items:start;transition:all .3s ease;}
+    .why-preview{display:none;}                   /* hidden by default - removes the empty space */
+    .why-menu.expanded .mega-menu-content{grid-template-columns:1fr 1fr;}
+    .why-menu.expanded .why-preview{display:block;}
 
-    /* Compact heading for default Why CellGate state */
+    /* Compact heading for Why CellGate */
     .why-heading{
-      font-size:24px;line-height:1.2;font-weight:800;letter-spacing:.5px;
+      font-size:26px;line-height:1.15;font-weight:800;letter-spacing:.5px;
       color:#0b6fb9;text-transform:uppercase;margin:6px 0 18px 0;
     }
+    /* When preview is shown, make heading a bit smaller so it does not wrap */
+    .why-menu.expanded .why-heading{font-size:22px;margin-bottom:14px;}
 
     /* About - Support - Dealers: fixed width and horizontal items */
     .about-menu,.support-menu,.dealers-menu{
@@ -134,7 +138,7 @@
     .solution-name{font-weight:600;color:#333;display:block;font-size:15px;margin-bottom:2px;}
     .solution-desc{font-size:12px;color:#666;}
 
-    /* Dynamic Solution block */
+    /* Dynamic Solution Message */
     .solution-message{
       background:#f5f5f5;border:3px solid #52A6A5;color:#333;padding:25px;border-radius:8px;margin-top:20px;
       box-shadow:0 4px 12px rgba(82,166,165,.3);min-height:150px;display:flex;flex-direction:column;justify-content:center;
@@ -372,7 +376,7 @@
                         </a>
                       </li>
                       <li>
-                        <!-- Blog shows an image on the right -->
+                        <!-- Blog shows an image on the right on hover - and optionally by default on blog pages -->
                         <a href="https://cell-gate.com/blog/" class="support-link benefit-link" data-feature="blog">
                           <span class="support-icon">📝</span> Blog
                         </a>
@@ -380,8 +384,8 @@
                     </ul>
                   </div>
 
-                  <!-- Right column - empty until a link is hovered -->
-                  <div class="menu-column" id="whyMessage" style="display:none;"></div>
+                  <!-- Right column - hidden until a link is hovered -->
+                  <div class="menu-column why-preview" id="whyPreview"></div>
                 </div>
               </div>
             </li>
@@ -566,7 +570,7 @@
     }
     function resetSolutionMessage(){updateSolutionMessage('default');}
 
-    // Why CellGate right panel content
+    // Why CellGate right preview content
     const whyMessages={
       howItWorks:{html:'<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:15px;"><img src="https://cell-gate.com/wp-content/uploads/2025/10/Untitled-100-x-100-px.png" style="width:100%;height:auto;border-radius:6px;"><img src="https://cell-gate.com/wp-content/uploads/2025/10/Untitled-100-x-100-px-2.png" style="width:100%;height:auto;border-radius:6px;"><img src="https://cell-gate.com/wp-content/uploads/2025/10/Untitled-100-x-100-px-1.png" style="width:100%;height:auto;border-radius:6px;"><img src="https://cell-gate.com/wp-content/uploads/2025/10/Untitled-100-x-100-px-3.png" style="width:100%;height:auto;border-radius:6px;"></div><p style="text-align:center;font-size:14px;font-weight:600;color:#333;">Know who was on your property and when</p>'},
       control:{html:'<div style="text-align:center;"><img src="https://i.ibb.co/HpryLZYX/Screen-Shot-2025-09-30-at-11-35-54-PM.png" style="max-width:70%;height:auto;border-radius:8px;margin-bottom:15px;"><p style="font-size:14px;font-weight:600;color:#333;margin-bottom:12px;">Control your property from anywhere</p><div style="display:flex;justify-content:center;gap:8px;"><a href="https://play.google.com/store/apps/details?id=com.celaccess&hl=en_US&pli=1" target="_blank"><img src="https://lh3.googleusercontent.com/q1k2l5CwMV31JdDXcpN4Ey7O43PxnjAuZBTmcHEwQxVuv_2wCE2gAAQMWxwNUC2FYEOnYgFPOpw6kmHJWuEGeIBLTj9CuxcOEeU8UXyzWJq4NJM3lg=s0" alt="Get it on Google Play" style="height:32px;"></a><a href="https://apps.apple.com/us/app/cellgate-mobile-connect/id575775114" target="_blank"><img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store" style="height:32px;"></a></div></div>'},
@@ -576,22 +580,22 @@
     };
 
     function updateWhyMessage(type){
-      const box=document.getElementById('whyMessage');
+      const box=document.getElementById('whyPreview');
       const menu=document.getElementById('whyMegaMenu');
       const msg=whyMessages[type];
       if(msg){
         box.style.display='block';
         box.style.cssText='display:block;background:#f5f5f5;padding:25px;border-radius:8px;color:#333;border:3px solid #52A6A5;';
         box.innerHTML=msg.html;
-        menu.classList.add('expanded');
+        menu.classList.add('expanded'); // triggers 2-column layout and shows preview area
       }
     }
     function resetWhyMessage(){
-      const box=document.getElementById('whyMessage');
+      const box=document.getElementById('whyPreview');
       const menu=document.getElementById('whyMegaMenu');
       box.style.display='none';
       box.innerHTML='';
-      menu.classList.remove('expanded');
+      menu.classList.remove('expanded'); // returns to compact single column - no empty space
     }
 
     document.addEventListener('DOMContentLoaded',function(){
@@ -602,6 +606,11 @@
       });
 
       const whyContainer=document.getElementById('whyMenuContainer');
+      const whyMenu=document.getElementById('whyMegaMenu');
+
+      // Any time the menu itself is entered without hovering an item - force compact state
+      if(whyMenu){ whyMenu.addEventListener('mouseenter', resetWhyMessage); }
+
       if(whyContainer){
         // Leave the whole menu area - return to tight single column
         whyContainer.addEventListener('mouseleave',resetWhyMessage);
@@ -610,7 +619,7 @@
         });
       }
 
-      // If on blog, pre-load the blog image on the right
+      // If on blog, you wanted the blog image to appear on the right by default
       try{
         const path=(window.location&&window.location.pathname)?window.location.pathname:'';
         if(path.indexOf('/blog')!==-1){updateWhyMessage('blog');}
