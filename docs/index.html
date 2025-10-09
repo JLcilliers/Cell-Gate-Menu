@@ -64,31 +64,28 @@
     }
     .mega-menu-content{padding:40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:40px;}
 
+    /* Section title - show it is a link */
+    .column-title{margin:0 0 15px 0;padding-bottom:10px;border-bottom:2px solid #52A6A5;}
+    .section-link{display:flex;align-items:center;gap:10px;text-decoration:none;color:#1A1A1A;text-transform:uppercase;font-size:13px;font-weight:700;letter-spacing:1px;}
+    .section-link .chev{font-size:16px;line-height:1;transition:transform .2s,color .2s;}
+    .section-link:hover{color:#0066CC;}
+    .section-link:hover .chev{transform:translateX(4px);color:#0066CC;}
+
     /* Solutions and Products layouts */
     .solutions-menu .mega-menu-content{grid-template-columns:repeat(2,1fr);}
     .products-menu .mega-menu-content{grid-template-columns:repeat(3,1fr);gap:25px;}
 
-    /* WHY CELLGATE - narrow by default - expands only when a preview is shown */
+    /* WHY CELLGATE - two columns by default with a default preview image */
     .why-menu{
-      min-width:600px !important;
-      width:600px !important;
-      max-width:600px !important;
-      transition:min-width .25s ease,width .25s ease,max-width .25s ease;
-    }
-    .why-menu .mega-menu-content{grid-template-columns:1fr;align-items:start;transition:all .25s ease;}
-    .why-menu.expanded{
       min-width:1040px !important;
       width:1040px !important;
       max-width:1040px !important;
     }
-    .why-menu.expanded .mega-menu-content{grid-template-columns:1fr 1fr;}
-
-    /* Compact heading for Why CellGate */
+    .why-menu .mega-menu-content{grid-template-columns:1fr 1fr;align-items:start;}
     .why-heading{
       font-size:20px;line-height:1.1;font-weight:800;letter-spacing:.5px;
       color:#0b6fb9;text-transform:uppercase;margin:6px 0 14px 0;white-space:nowrap;
     }
-    .why-menu.expanded .why-heading{font-size:18px;margin-bottom:12px;}
 
     /* About - Support - Dealers: fixed width and horizontal items */
     .about-menu,.support-menu,.dealers-menu{
@@ -102,9 +99,7 @@
       display:block;text-align:center;padding:25px 30px !important;
     }
     .about-menu .menu-column,.support-menu .menu-column,.dealers-menu .menu-column{width:100%;}
-    .about-menu .column-title,.support-menu .column-title,.dealers-menu .column-title{
-      text-align:center;border-bottom:2px solid #52A6A5;padding-bottom:10px;margin-bottom:16px;font-size:13px;
-    }
+    .about-menu .column-title,.support-menu .column-title,.dealers-menu .column-title{margin-bottom:16px;}
     .about-menu .support-links,
     .support-menu .support-links,
     .dealers-menu .support-links{
@@ -118,15 +113,14 @@
     .support-menu .support-link,
     .dealers-menu .support-link{
       display:inline-flex;align-items:center;justify-content:center;gap:8px;
-      width:100%;padding:10px 18px;margin:0;font-size:14px;white-space:nowrap;
+      width:100%;padding:10px 18px;margin:0;font-size:14px;white-space:nowrap;text-decoration:none;color:#333;border-radius:4px;transition:all .2s;
     }
+    .about-menu .support-link:hover,
+    .support-menu .support-link:hover,
+    .dealers-menu .support-link:hover{background:#E8F5F3;color:#0066CC;transform:translateX(3px);}
 
-    /* Column styles */
+    /* Column styles shared */
     .menu-column{min-width:200px;}
-    .column-title{
-      font-size:13px;font-weight:700;color:#1A1A1A;text-transform:uppercase;letter-spacing:1px;
-      margin-bottom:15px;padding-bottom:10px;border-bottom:2px solid #52A6A5;
-    }
     .product-list{list-style:none;}
     .product-item{margin-bottom:8px;padding:8px;border-radius:4px;transition:all .2s;cursor:pointer;border-left:3px solid transparent;}
     .product-item:hover{background:#f8f8f8;transform:translateX(5px);border-left-color:#52A6A5;}
@@ -154,12 +148,9 @@
     }
     .solution-message:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(82,166,165,.4);}
 
-    /* Generic support link */
+    /* Generic support links outside special menus */
     .support-links{list-style:none;}
-    .support-link{
-      display:flex;align-items:center;gap:10px;padding:10px;margin-bottom:6px;color:#333;text-decoration:none;
-      border-radius:4px;font-size:14px;transition:all .2s;
-    }
+    .support-link{display:flex;align-items:center;gap:10px;padding:10px;margin-bottom:6px;color:#333;text-decoration:none;border-radius:4px;font-size:14px;transition:all .2s;}
     .support-link:hover{background:#E8F5F3;color:#0066CC;transform:translateX(3px);}
     .support-icon{color:#52A6A5;font-size:16px;}
 
@@ -190,9 +181,7 @@
         width:var(--fixed-dropdown-width) !important;
         max-width:var(--fixed-dropdown-width) !important;
       }
-      /* keep Why CellGate narrow by default even on large tablets */
-      .why-menu{min-width:560px !important;width:560px !important;max-width:560px !important;}
-      .why-menu.expanded{min-width:980px !important;width:980px !important;max-width:980px !important;}
+      .why-menu{min-width:980px !important;width:980px !important;max-width:980px !important;}
     }
     @media (max-width:992px){
       .main-nav{gap:20px;}
@@ -200,8 +189,7 @@
       .mega-menu{min-width:600px;max-width:700px;}
       .products-menu .mega-menu-content{grid-template-columns:repeat(2,1fr);}
       .about-menu,.support-menu,.dealers-menu{min-width:700px !important;width:700px !important;max-width:700px !important;}
-      .why-menu{min-width:520px !important;width:520px !important;max-width:520px !important;}
-      .why-menu.expanded{min-width:900px !important;width:900px !important;max-width:900px !important;}
+      .why-menu{min-width:900px !important;width:900px !important;max-width:900px !important;}
     }
     @media (max-width:768px){
       nav{display:none;}
@@ -254,7 +242,7 @@
               <div class="mega-menu solutions-menu" role="menu" aria-label="Solutions">
                 <div class="mega-menu-content">
                   <div class="menu-column">
-                    <h3 class="column-title">By Market</h3>
+                    <h3 class="column-title"><a class="section-link" href="https://cell-gate.com/access-control-solutions/"><span>By Market</span> <span class="chev">›</span></a></h3>
                     <ul class="solution-list">
                       <a href="https://cell-gate.com/watchman/multi-family/" class="solution-item"
                          onmouseover="updateSolutionMessage('multi')" onmouseout="resetSolutionMessage()">
@@ -301,48 +289,122 @@
               <a href="https://cell-gate.com/watchman/" class="nav-link has-dropdown">Products</a>
               <div class="mega-menu products-menu" role="menu" aria-label="Products">
                 <div class="mega-menu-content">
+                  <!-- Column 1: Video Intercom -->
                   <div class="menu-column">
-                    <h3 class="column-title">Video Intercom</h3>
+                    <h3 class="column-title">
+                      <a class="section-link" href="https://cell-gate.com/watchman/">
+                        <span>Video Intercom</span> <span class="chev">›</span>
+                      </a>
+                    </h3>
                     <h4 style="font-size:13px;color:#666;margin:10px 0 8px;font-weight:600;">Live Video Telephone Entry</h4>
                     <ul class="product-list">
-                      <li class="product-item"><a href="https://cell-gate.com/watchman/watchman-w410/" class="product-link"><div class="product-name">Watchman W410</div><div class="product-meta">Telephone entry with photo capture</div></a></li>
-                      <li class="product-item"><a href="https://cell-gate.com/watchman/watchman-w450/" class="product-link"><div class="product-name">Watchman W450 series</div><div class="product-meta">Live streaming video with single call group</div></a></li>
-                      <li class="product-item"><a href="https://cell-gate.com/watchman/watchman-w461/" class="product-link"><div class="product-name">Watchman W461 series</div><div class="product-meta">Slim touchscreen with directory</div></a></li>
-                      <li class="product-item"><a href="https://cell-gate.com/watchman-w480/" class="product-link"><div class="product-name">Watchman W480 series</div><div class="product-meta">8&quot; touchscreen with QR & PIN codes</div></a></li>
-                      <li class="product-item"><a href="https://cell-gate.com/watchman/watchman-wxl2/" class="product-link"><div class="product-name">Watchman WXL series</div><div class="product-meta">Premium large touchscreen solution</div></a></li>
+                      <li class="product-item">
+                        <a href="https://cell-gate.com/watchman/watchman-w410/" class="product-link">
+                          <div class="product-name">Watchman W410</div>
+                          <div class="product-meta">Telephone entry with photo capture</div>
+                        </a>
+                      </li>
+                      <li class="product-item">
+                        <a href="https://cell-gate.com/watchman/watchman-w450/" class="product-link">
+                          <div class="product-name">Watchman W450 series</div>
+                          <div class="product-meta">Live streaming video with single call group</div>
+                        </a>
+                      </li>
+                      <li class="product-item">
+                        <a href="https://cell-gate.com/watchman/watchman-w461/" class="product-link">
+                          <div class="product-name">Watchman W461 series</div>
+                          <div class="product-meta">Slim touchscreen with directory</div>
+                        </a>
+                      </li>
+                      <li class="product-item">
+                        <a href="https://cell-gate.com/watchman-w480/" class="product-link">
+                          <div class="product-name">Watchman W480 series</div>
+                          <div class="product-meta">8" touchscreen with QR & PIN codes</div>
+                        </a>
+                      </li>
+                      <li class="product-item">
+                        <a href="https://cell-gate.com/watchman/watchman-wxl2/" class="product-link">
+                          <div class="product-name">Watchman WXL series</div>
+                          <div class="product-meta">Premium large touchscreen solution</div>
+                        </a>
+                      </li>
                     </ul>
                   </div>
 
+                  <!-- Column 2: Access Control -->
                   <div class="menu-column">
-                    <h3 class="column-title">Access Control</h3>
+                    <h3 class="column-title">
+                      <a class="section-link" href="https://cell-gate.com/omnipoint/">
+                        <span>Access Control</span> <span class="chev">›</span>
+                      </a>
+                    </h3>
+
                     <h4 style="font-size:13px;color:#666;margin:10px 0 8px;font-weight:600;">Wireless Multi-Point Access Control</h4>
                     <ul class="product-list">
-                      <li class="product-item"><a href="https://cell-gate.com/omnipoint/" class="product-link"><div class="product-name">OmniPoint®</div><div class="product-meta">No long-distance wiring needed</div></a></li>
+                      <li class="product-item">
+                        <a href="https://cell-gate.com/omnipoint/" class="product-link">
+                          <div class="product-name">OmniPoint®</div>
+                          <div class="product-meta">No long-distance wiring needed</div>
+                        </a>
+                      </li>
                     </ul>
+
                     <h4 style="font-size:13px;color:#666;margin:15px 0 8px;font-weight:600;">Wireless & Wired Controllers</h4>
                     <ul class="product-list">
-                      <li class="product-item"><a href="https://cell-gate.com/entria/four-door-controller/" class="product-link"><div class="product-name">Entria™ 4-Door Controller</div><div class="product-meta">Scalable access control w/cameras</div></a></li>
-                      <li class="product-item"><a href="https://cell-gate.com/entria/" class="product-link"><div class="product-name">Entria Single Door Controller</div><div class="product-meta">Access Control for One Door/Gate</div></a></li>
+                      <li class="product-item">
+                        <a href="https://cell-gate.com/entria/four-door-controller/" class="product-link">
+                          <div class="product-name">Entria™ 4-Door Controller</div>
+                          <div class="product-meta">Scalable access control w/cameras</div>
+                        </a>
+                      </li>
+                      <li class="product-item">
+                        <a href="https://cell-gate.com/entria/" class="product-link">
+                          <div class="product-name">Entria Single Door Controller</div>
+                          <div class="product-meta">Access Control for One Door/Gate</div>
+                        </a>
+                      </li>
                     </ul>
+
                     <h4 style="font-size:13px;color:#666;margin:15px 0 8px;font-weight:600;">Readers & Credentials</h4>
                     <ul class="product-list">
-                      <li class="product-item"><a href="https://cell-gate.com/readers/infinity/" class="product-link"><div class="product-name">Infinity</div><div class="product-meta">QR code & Bluetooth reader</div></a></li>
-                      <li class="product-item"><a href="https://cell-gate.com/readers/" class="product-link"><div class="product-name">Halo</div><div class="product-meta">Encrypted reader w/BLE</div></a></li>
-                      <li class="product-item"><a href="https://cell-gate.com/readers/" class="product-link"><div class="product-name">Digit</div><div class="product-meta">Numeric keypad & prox reader</div></a></li>
+                      <li class="product-item">
+                        <a href="https://cell-gate.com/readers/infinity/" class="product-link">
+                          <div class="product-name">Infinity</div>
+                          <div class="product-meta">QR code & Bluetooth reader</div>
+                        </a>
+                      </li>
+                      <li class="product-item">
+                        <a href="https://cell-gate.com/readers/" class="product-link">
+                          <div class="product-name">Halo</div>
+                          <div class="product-meta">Encrypted reader w/BLE</div>
+                        </a>
+                      </li>
+                      <li class="product-item">
+                        <a href="https://cell-gate.com/readers/" class="product-link">
+                          <div class="product-name">Digit</div>
+                          <div class="product-meta">Numeric keypad & prox reader</div>
+                        </a>
+                      </li>
                     </ul>
                   </div>
 
+                  <!-- Column 3: Access Credentials (renamed from Visitor Management) -->
                   <div class="menu-column">
-                    <h3 class="column-title">Visitor Management</h3>
-                    <div style="background:url('https://cell-gate.com/wp-content/uploads/2025/10/20220818_cellgate_527.jpg') center/cover;border:2px solid #52A6A5;border-radius:8px;padding:25px 15px;margin-bottom:10px;box-shadow:0 4px 6px rgba(0,0,0,.1);">
-                      <h4 style="font-size:14px;font-weight:700;color:#fff;margin-bottom:10px;text-shadow:2px 2px 4px rgba(0,0,0,.8);">Access Credentials</h4>
+                    <h3 class="column-title">
+                      <a class="section-link" href="https://cell-gate.com/readers/">
+                        <span>Access Credentials</span> <span class="chev">›</span>
+                      </a>
+                    </h3>
+
+                    <div style="background:url('https://cell-gate.com/wp-content/uploads/2025/10/20220818_cellgate_527.jpg') center/cover;border:2px solid #52A6A5;border-radius:8px;padding:22px 15px;margin-bottom:10px;box-shadow:0 4px 6px rgba(0,0,0,.1);">
+                      <!-- Removed the inner heading that said Access Credentials per request -->
                       <div style="margin-left:15px;">
-                        <h5 style="font-size:13px;font-weight:600;color:#fff;margin:8px 0 6px;text-shadow:2px 2px 4px rgba(0,0,0,.8);">Visitors</h5>
+                        <h5 style="font-size:13px;font-weight:700;color:#fff;margin:0 0 6px;text-shadow:2px 2px 4px rgba(0,0,0,.8);">Visitors</h5>
                         <ul style="list-style:none;margin-left:15px;padding:0;">
                           <li style="margin:4px 0;color:#fff;font-size:12px;text-shadow:2px 2px 4px rgba(0,0,0,.8);">QR Codes</li>
                           <li style="margin:4px 0;color:#fff;font-size:12px;text-shadow:2px 2px 4px rgba(0,0,0,.8);">PIN Codes</li>
                         </ul>
-                        <h5 style="font-size:13px;font-weight:600;color:#fff;margin:10px 0 6px;text-shadow:2px 2px 4px rgba(0,0,0,.8);">Residents and Employees</h5>
+                        <h5 style="font-size:13px;font-weight:700;color:#fff;margin:10px 0 6px;text-shadow:2px 2px 4px rgba(0,0,0,.8);">Residents and Employees</h5>
                         <ul style="list-style:none;margin-left:15px;padding:0;">
                           <li style="margin:4px 0;color:#fff;font-size:12px;text-shadow:2px 2px 4px rgba(0,0,0,.8);">Bluetooth Contactless</li>
                         </ul>
@@ -363,10 +425,9 @@
               <a href="https://cell-gate.com/how-it-works/" class="nav-link has-dropdown">Why CellGate</a>
               <div class="mega-menu why-menu" id="whyMegaMenu" role="menu" aria-label="Why CellGate">
                 <div class="mega-menu-content" id="whyMenuContainer">
-                  <!-- Left column - compact by default -->
+                  <!-- Left column -->
                   <div class="menu-column">
                     <h3 class="why-heading">Total Property Security Access</h3>
-
                     <ul class="support-links">
                       <li>
                         <a href="https://cell-gate.com/how-it-works/" class="support-link benefit-link" data-feature="howItWorks">
@@ -385,11 +446,10 @@
                       </li>
                       <li>
                         <a href="https://cell-gate.com/gold-key-service/" class="support-link benefit-link" data-feature="support">
-                          <span class="support-icon">🔑</span> Gold Key Service/Support Services
+                          <span class="support-icon">🔑</span> About Gold Key Service
                         </a>
                       </li>
                       <li>
-                        <!-- Blog shows an image on the right on hover - and on blog pages by default when opened -->
                         <a href="https://cell-gate.com/blog/" class="support-link benefit-link" data-feature="blog">
                           <span class="support-icon">📝</span> Blog
                         </a>
@@ -397,7 +457,11 @@
                     </ul>
                   </div>
 
-                  <!-- Right preview column is created dynamically on hover -->
+                  <!-- Right column - default image and tagline; replaced on hover -->
+                  <div class="menu-column" id="whyPreview" style="background:#f5f5f5;padding:25px;border-radius:8px;color:#333;border:3px solid #52A6A5;text-align:center;">
+                    <img src="/wp-content/uploads/2025/10/Dual-Network-Flexibility.jpg" alt="Dual Network Flexibility" style="max-width:100%;height:auto;border-radius:6px;margin-bottom:12px;">
+                    <div style="font-size:14px;font-weight:600;">CellGate solutions: powered by cellular LTE &amp; internet networks</div>
+                  </div>
                 </div>
               </div>
             </li>
@@ -408,7 +472,7 @@
               <div class="mega-menu about-menu" role="menu" aria-label="About Us">
                 <div class="mega-menu-content">
                   <div class="menu-column">
-                    <h3 class="column-title">Company</h3>
+                    <h3 class="column-title"><a class="section-link" href="https://cell-gate.com/about-us/"><span>Company</span> <span class="chev">›</span></a></h3>
                     <ul class="support-links">
                       <li><a href="https://cell-gate.com/about-us/" class="support-link"><span class="support-icon">👥</span> Our Team</a></li>
                       <li><a href="https://cell-gate.com/about-us/" class="support-link"><span class="support-icon">📖</span> Our Story</a></li>
@@ -430,10 +494,11 @@
               <div class="mega-menu support-menu" role="menu" aria-label="Support">
                 <div class="mega-menu-content">
                   <div class="menu-column">
-                    <h3 class="column-title">Support & Help</h3>
+                    <h3 class="column-title"><a class="section-link" href="https://cell-gate.com/resources/"><span>Support &amp; Help</span> <span class="chev">›</span></a></h3>
                     <ul class="support-links">
-                      <li><a href="https://cell-gate.com/dealer-resources/support-video-guides/" class="support-link"><span class="support-icon">🎥</span> Video & Support Guides</a></li>
-                      <li><a href="https://cell-gate.com/gold-key-service/" class="support-link"><span class="support-icon">🔑</span> Gold Key Service & Support</a></li>
+                      <li><a href="https://cell-gate.com/dealer-resources/support-video-guides/" class="support-link"><span class="support-icon">🎥</span> Video &amp; Support Guides</a></li>
+                      <li><a href="https://cell-gate.com/gold-key-service/" class="support-link"><span class="support-icon">🔑</span> About Gold Key Service</a></li>
+                      <li><a href="https://cell-gate.com/customer-care/" class="support-link"><span class="support-icon">🤝</span> About Customer Care</a></li>
                       <li><a href="https://cell-gate.com/faqs/" class="support-link"><span class="support-icon">❓</span> FAQs</a></li>
                     </ul>
                   </div>
@@ -452,11 +517,11 @@
               <div class="mega-menu dealers-menu" role="menu" aria-label="Dealers">
                 <div class="mega-menu-content">
                   <div class="menu-column">
-                    <h3 class="column-title">Dealer Program</h3>
+                    <h3 class="column-title"><a class="section-link" href="https://cell-gate.com/dealer-inquiries/"><span>Dealer Program</span> <span class="chev">›</span></a></h3>
                     <ul class="support-links">
                       <li><a href="https://cell-gate.com/dealer-inquiries/" class="support-link"><span class="support-icon">🤝</span> Become a Dealer</a></li>
                       <li><a href="https://cell-gate.com/technical-support/" class="support-link"><span class="support-icon">🛠️</span> Dealer Support</a></li>
-                      <li><a href="https://cell-gate.com/events/" class="support-link"><span class="support-icon">📅</span> Events & Shows</a></li>
+                      <li><a href="https://cell-gate.com/events/" class="support-link"><span class="support-icon">📅</span> Events &amp; Shows</a></li>
                     </ul>
                   </div>
                 </div>
@@ -507,10 +572,14 @@
           <li class="mobile-submenu-item"><a href="https://cell-gate.com/watchman/watchman-w461/" class="mobile-submenu-link">W461 series</a></li>
           <li class="mobile-submenu-item"><a href="https://cell-gate.com/watchman-w480/" class="mobile-submenu-link">W480 series</a></li>
           <li class="mobile-submenu-item"><a href="https://cell-gate.com/watchman/watchman-wxl2/" class="mobile-submenu-link">WXL series</a></li>
+
           <li class="mobile-submenu-item"><strong style="padding:8px 12px;display:block;color:#333;margin-top:10px;">Access Control</strong></li>
           <li class="mobile-submenu-item"><a href="https://cell-gate.com/omnipoint/" class="mobile-submenu-link">OmniPoint</a></li>
           <li class="mobile-submenu-item"><a href="https://cell-gate.com/entria/" class="mobile-submenu-link">Entria</a></li>
-          <li class="mobile-submenu-item"><a href="https://cell-gate.com/readers/" class="mobile-submenu-link">Readers & Credentials</a></li>
+          <li class="mobile-submenu-item"><a href="https://cell-gate.com/readers/" class="mobile-submenu-link">Readers &amp; Credentials</a></li>
+
+          <li class="mobile-submenu-item"><strong style="padding:8px 12px;display:block;color:#333;margin-top:10px;">Access Credentials</strong></li>
+          <li class="mobile-submenu-item"><a href="https://cell-gate.com/readers/" class="mobile-submenu-link">Overview</a></li>
         </ul>
       </li>
 
@@ -521,7 +590,7 @@
           <li class="mobile-submenu-item"><a href="https://cell-gate.com/how-it-works/" class="mobile-submenu-link">How It Works</a></li>
           <li class="mobile-submenu-item"><a href="https://cell-gate.com/cellgate-app/" class="mobile-submenu-link">CellGate App</a></li>
           <li class="mobile-submenu-item"><a href="https://cell-gate.com/truecloud/" class="mobile-submenu-link">TrueCloud Connect</a></li>
-          <li class="mobile-submenu-item"><a href="https://cell-gate.com/gold-key-service/" class="mobile-submenu-link">Gold Key Service</a></li>
+          <li class="mobile-submenu-item"><a href="https://cell-gate.com/gold-key-service/" class="mobile-submenu-link">About Gold Key Service</a></li>
           <li class="mobile-submenu-item"><a href="https://cell-gate.com/blog/" class="mobile-submenu-link">Blog</a></li>
         </ul>
       </li>
@@ -538,8 +607,9 @@
       <li class="mobile-nav-item">
         <a href="https://cell-gate.com/resources/" class="mobile-nav-link">SUPPORT</a>
         <ul class="mobile-submenu">
-          <li class="mobile-submenu-item"><a href="https://cell-gate.com/dealer-resources/support-video-guides/" class="mobile-submenu-link">Video & Support Guides</a></li>
-          <li class="mobile-submenu-item"><a href="https://cell-gate.com/gold-key-service/" class="mobile-submenu-link">Gold Key Service</a></li>
+          <li class="mobile-submenu-item"><a href="https://cell-gate.com/dealer-resources/support-video-guides/" class="mobile-submenu-link">Video &amp; Support Guides</a></li>
+          <li class="mobile-submenu-item"><a href="https://cell-gate.com/gold-key-service/" class="mobile-submenu-link">About Gold Key Service</a></li>
+          <li class="mobile-submenu-item"><a href="https://cell-gate.com/customer-care/" class="mobile-submenu-link">About Customer Care</a></li>
           <li class="mobile-submenu-item"><a href="https://cell-gate.com/faqs/" class="mobile-submenu-link">FAQs</a></li>
         </ul>
       </li>
@@ -549,7 +619,7 @@
         <ul class="mobile-submenu">
           <li class="mobile-submenu-item"><a href="https://cell-gate.com/dealer-inquiries/" class="mobile-submenu-link">Become a Dealer</a></li>
           <li class="mobile-submenu-item"><a href="https://cell-gate.com/technical-support/" class="mobile-submenu-link">Dealer Support</a></li>
-          <li class="mobile-submenu-item"><a href="https://cell-gate.com/events/" class="mobile-submenu-link">Events & Shows</a></li>
+          <li class="mobile-submenu-item"><a href="https://cell-gate.com/events/" class="mobile-submenu-link">Events &amp; Shows</a></li>
         </ul>
       </li>
 
@@ -588,36 +658,31 @@
       control:{html:'<div style="text-align:center;"><img src="https://i.ibb.co/HpryLZYX/Screen-Shot-2025-09-30-at-11-35-54-PM.png" style="max-width:70%;height:auto;border-radius:8px;margin-bottom:15px;"><p style="font-size:14px;font-weight:600;color:#333;margin-bottom:12px;">Control your property from anywhere</p><div style="display:flex;justify-content:center;gap:8px;"><a href="https://play.google.com/store/apps/details?id=com.celaccess&hl=en_US&pli=1" target="_blank"><img src="https://lh3.googleusercontent.com/q1k2l5CwMV31JdDXcpN4Ey7O43PxnjAuZBTmcHEwQxVuv_2wCE2gAAQMWxwNUC2FYEOnYgFPOpw6kmHJWuEGeIBLTj9CuxcOEeU8UXyzWJq4NJM3lg=s0" alt="Get it on Google Play" style="height:32px;"></a><a href="https://apps.apple.com/us/app/cellgate-mobile-connect/id575775114" target="_blank"><img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store" style="height:32px;"></a></div></div>'},
       centralized:{html:'<div style="text-align:center;"><img src="https://cell-gate.com/wp-content/uploads/2025/10/Untitled-design-3.png" alt="TrueCloud Connect" style="max-width:90%;height:auto;margin-bottom:8px;"><p style="font-size:14px;font-weight:600;color:#333;">Single login for all products</p></div>'},
       support:{html:'<div style="text-align:center;"><img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=600" style="max-width:100%;height:auto;border-radius:8px;margin-bottom:15px;"><p style="font-size:14px;font-weight:600;color:#333;">Expert help that keeps you running</p></div>'},
-      blog:{html:'<div style="text-align:center;"><img src="/wp-content/uploads/2025/09/Visitor-Pass-Type-Pin-Code-Visitor-Pass-Zoomed.png" alt="Visitor Pass - PIN Code zoomed" style="max-width:100%;height:auto;border-radius:8px;"></div>'}
+      blog:{html:'<div style="text-align:center;"><img src="/wp-content/uploads/2025/09/Visitor-Pass-Type-Pin-Code-Visitor-Pass-Zoomed.png" alt="Visitor Pass - PIN Code zoomed" style="max-width:100%;height:auto;border-radius:8px;"></div>'},
+      default:{html:'<div style="text-align:center;"><img src="/wp-content/uploads/2025/10/Dual-Network-Flexibility.jpg" alt="Dual Network Flexibility" style="max-width:100%;height:auto;border-radius:6px;margin-bottom:12px;"><div style="font-size:14px;font-weight:600;">CellGate solutions: powered by cellular LTE &amp; internet networks</div></div>'}
     };
 
-    function showWhyPreview(type){
-      const container=document.getElementById('whyMenuContainer');
-      const menu=document.getElementById('whyMegaMenu');
-      const msg=whyMessages[type];
-      if(!msg) return;
-
-      // Create preview column only when needed
-      let preview=document.getElementById('whyPreview');
-      if(!preview){
-        preview=document.createElement('div');
-        preview.id='whyPreview';
-        preview.className='menu-column';
-        container.appendChild(preview);
-      }
-      preview.style.cssText='background:#f5f5f5;padding:25px;border-radius:8px;color:#333;border:3px solid #52A6A5;';
-      preview.innerHTML=msg.html;
-
-      menu.classList.add('expanded'); // triggers two column layout and width expansion
+    function setWhyPreviewHTML(html){
+      const preview=document.getElementById('whyPreview');
+      if(preview){ preview.innerHTML=html; }
     }
 
-    function clearWhyPreview(){
-      const preview=document.getElementById('whyPreview');
-      const menu=document.getElementById('whyMegaMenu');
-      if(preview && preview.parentNode){
-        preview.parentNode.removeChild(preview); // remove the column entirely so no space remains
-      }
-      menu.classList.remove('expanded'); // back to single column - narrow width
+    function showWhyPreview(type){
+      const msg=whyMessages[type];
+      if(!msg) return;
+      setWhyPreviewHTML(msg.html);
+    }
+
+    function restoreWhyDefault(){
+      // If on blog, default to blog image, else the dual network image
+      try{
+        const path=(window.location && window.location.pathname) ? window.location.pathname : '';
+        if(path.indexOf('/blog') !== -1){
+          setWhyPreviewHTML(whyMessages.blog.html);
+          return;
+        }
+      }catch(e){}
+      setWhyPreviewHTML(whyMessages.default.html);
     }
 
     document.addEventListener('DOMContentLoaded',function(){
@@ -628,29 +693,16 @@
       });
 
       const whyContainer=document.getElementById('whyMenuContainer');
-      const whyMenu=document.getElementById('whyMegaMenu');
-
-      // Ensure the menu starts compact every time it opens
-      if(whyMenu){ whyMenu.addEventListener('mouseenter', clearWhyPreview); }
-
-      // Leaving the menu restores compact mode
       if(whyContainer){
-        whyContainer.addEventListener('mouseleave', clearWhyPreview);
+        // Leaving the menu restores the default image and tagline
+        whyContainer.addEventListener('mouseleave', restoreWhyDefault);
         whyContainer.addEventListener('focusout', function(e){
-          if(!whyContainer.contains(e.relatedTarget)){ clearWhyPreview(); }
+          if(!whyContainer.contains(e.relatedTarget)){ restoreWhyDefault(); }
         });
       }
 
-      // On blog pages, auto show the blog image once the Why menu is opened
-      try{
-        const path=(window.location && window.location.pathname) ? window.location.pathname : '';
-        if(path.indexOf('/blog') !== -1){
-          whyMenu && whyMenu.addEventListener('mouseenter', function once(){
-            showWhyPreview('blog');
-            whyMenu.removeEventListener('mouseenter', once);
-          });
-        }
-      }catch(e){}
+      // Initialize the default state on load
+      restoreWhyDefault();
 
       // Default content for Solutions preview
       resetSolutionMessage();
