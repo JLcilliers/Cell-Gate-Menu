@@ -72,6 +72,14 @@
         .why-menu .mega-menu-content{ grid-template-columns: 1fr; transition: all 0.3s ease; }
         .why-menu.expanded .mega-menu-content{ grid-template-columns: repeat(2, 1fr); }
 
+        /* Make the default TPSA image smaller when no item is hovered */
+        .why-menu:not(.expanded) .tpsa-prominent-link img{
+            max-width: 360px; /* adjusts how small you want it */
+            width: 80%;
+            margin: 8px auto 18px;
+            display: block;
+        }
+
         /* Fixed width and horizontal items for About - Support - Dealers */
         .about-menu, .support-menu, .dealers-menu{
             min-width: var(--fixed-dropdown-width) !important;
@@ -157,7 +165,7 @@
         .tpsa-prominent-link img{ width: 100%; height: auto; display: block; border-radius: 8px; }
         .tpsa-prominent-link:hover{ transform: translateY(-3px); box-shadow: 0 6px 20px rgba(82,166,165,0.5); }
 
-        /* Quick actions - kept for parity, not shown in this menu */
+        /* Quick actions */
         .quick-actions{ background: #f8f8f8; border-radius: 8px; padding: 20px; }
         .action-btn{
             display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; padding: 12px; margin-bottom: 10px;
