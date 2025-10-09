@@ -1,779 +1,222 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CellGate Mega Menu</title>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
     <style>
         :root{
             /* One place to control fixed dropdown width for About - Support - Dealers */
             --fixed-dropdown-width: 900px;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
             background: #fff;
         }
-        
-        /* Header Styles */
-        .header {
-            background: #fff;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            position: relative;
-            z-index: 1000;
-        }
-        
-        .top-bar {
-            background: #1a1a1a;
-            color: #fff;
-            padding: 8px 0;
-            font-size: 13px;
-        }
-        
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
-        .top-bar .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .top-links a {
-            color: #fff;
-            text-decoration: none;
-            margin: 0 15px;
-            font-size: 13px;
-            transition: color 0.3s;
-        }
-        
-        .top-links a:hover {
-            color: #52A6A5;
-        }
-        
-        .truecloud-login-btn {
-            background: #52A6A5;
-            color: white !important;
-            padding: 6px 16px;
-            border-radius: 4px;
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s;
-            display: inline-block;
-        }
-        
-        .truecloud-login-btn:hover {
-            background: #3E8281;
-            color: white !important;
-            transform: translateY(-1px);
-            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-        }
-        
-        .logo-nav {
-            display: flex;
-            align-items: center;
-            padding: 15px 0;
-            justify-content: space-between;
-        }
-        
-        /* Logo Section */
-        .logo {
-            margin-right: 60px;
-        }
-        
-        .logo img {
-            height: 45px;
-            width: auto;
-        }
-        
-        /* Mobile Menu Button */
-        .mobile-menu-button {
-            display: none;
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 10px;
-        }
-        
-        .mobile-menu-button span {
-            display: block;
-            width: 25px;
-            height: 3px;
-            background: #333;
-            margin: 5px 0;
-            transition: 0.3s;
-        }
-        
-        .mobile-menu-button.active span:nth-child(1) {
-            transform: rotate(-45deg) translate(-5px, 6px);
-        }
-        
-        .mobile-menu-button.active span:nth-child(2) {
-            opacity: 0;
-        }
-        
-        .mobile-menu-button.active span:nth-child(3) {
-            transform: rotate(45deg) translate(-5px, -6px);
-        }
-        
-        /* Main Navigation */
-        .main-nav {
-            display: flex;
-            list-style: none;
-            gap: 35px;
-        }
-        
-        .nav-item {
-            position: relative;
-        }
-        
+
+        /* Header */
+        .header { background: #fff; box-shadow: 0 2px 4px rgba(0,0,0,0.1); position: relative; z-index: 1000; }
+        .top-bar { background: #1a1a1a; color: #fff; padding: 8px 0; font-size: 13px; }
+        .container { max-width: 1400px; margin: 0 auto; padding: 0 20px; }
+        .top-bar .container { display: flex; justify-content: space-between; align-items: center; }
+        .top-links a { color: #fff; text-decoration: none; margin: 0 15px; font-size: 13px; transition: color 0.3s; }
+        .top-links a:hover { color: #52A6A5; }
+        .truecloud-login-btn { background: #52A6A5; color: #fff !important; padding: 6px 16px; border-radius: 4px; text-decoration: none; font-weight: 500; transition: all 0.3s; display: inline-block; }
+        .truecloud-login-btn:hover { background: #3E8281; color: #fff !important; transform: translateY(-1px); box-shadow: 0 2px 4px rgba(0,0,0,0.2); }
+
+        .logo-nav { display: flex; align-items: center; padding: 15px 0; justify-content: space-between; }
+        .logo { margin-right: 60px; }
+        .logo img { height: 45px; width: auto; }
+
+        /* Mobile menu button */
+        .mobile-menu-button { display: none; background: none; border: none; cursor: pointer; padding: 10px; }
+        .mobile-menu-button span { display: block; width: 25px; height: 3px; background: #333; margin: 5px 0; transition: 0.3s; }
+        .mobile-menu-button.active span:nth-child(1) { transform: rotate(-45deg) translate(-5px, 6px); }
+        .mobile-menu-button.active span:nth-child(2) { opacity: 0; }
+        .mobile-menu-button.active span:nth-child(3) { transform: rotate(45deg) translate(-5px, -6px); }
+
+        /* Main nav */
+        .main-nav { display: flex; list-style: none; gap: 35px; }
+        .nav-item { position: relative; }
         .nav-link {
-            color: #333;
-            text-decoration: none;
-            font-size: 15px;
-            font-weight: 500;
-            padding: 10px 5px;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            transition: color 0.3s;
-            border-bottom: 3px solid transparent;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+            color: #333; text-decoration: none; font-size: 15px; font-weight: 500;
+            padding: 10px 5px; display: flex; align-items: center; gap: 5px;
+            transition: color 0.3s; border-bottom: 3px solid transparent;
+            text-transform: uppercase; letter-spacing: 0.5px;
         }
-        
-        .nav-link:hover {
-            color: #0066CC;
-            border-bottom-color: #0066CC;
-        }
-        
-        .has-dropdown::after {
-            content: '▼';
-            font-size: 9px;
-            opacity: 0.5;
-        }
-        
-        /* Mega Menu Styles */
-        .mega-menu {
-            position: absolute;
-            top: 100%;
-            left: 50%;
+        .nav-link:hover { color: #0066CC; border-bottom-color: #0066CC; }
+        .has-dropdown::after { content: '▼'; font-size: 9px; opacity: 0.5; }
+
+        /* Mega menu base */
+        .mega-menu{
+            position: absolute; top: 100%; left: 50%;
             transform: translateX(-50%) translateY(-10px);
-            background: #fff;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+            background: #fff; box-shadow: 0 10px 40px rgba(0,0,0,0.15);
             border-top: 3px solid #52A6A5;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-            min-width: 900px;
-            max-width: 1200px;
+            opacity: 0; visibility: hidden; transition: all 0.3s ease;
+            min-width: 900px; max-width: 1200px;
         }
+        .nav-item:hover .mega-menu, .nav-item:focus-within .mega-menu{
+            opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0);
+        }
+        .mega-menu-content{ padding: 40px; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; }
 
-        .nav-item:hover .mega-menu,
-        .nav-item:focus-within .mega-menu {
-            opacity: 1;
-            visibility: visible;
-            transform: translateX(-50%) translateY(0);
-        }
-        
-        .mega-menu-content {
-            padding: 40px;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-        }
-        
-        /* Special layouts */
-        .solutions-menu .mega-menu-content {
-            grid-template-columns: repeat(2, 1fr);
-        }
-        
-        .products-menu .mega-menu-content {
-            grid-template-columns: repeat(3, 1fr);
-            gap: 25px;
-        }
-        
-        .why-menu .mega-menu-content {
-            grid-template-columns: 1fr;
-            transition: all 0.3s ease;
-        }
-        
-        .why-menu.expanded .mega-menu-content {
-            grid-template-columns: repeat(2, 1fr);
-        }
+        /* Solutions and Products special layouts */
+        .solutions-menu .mega-menu-content{ grid-template-columns: repeat(2, 1fr); }
+        .products-menu .mega-menu-content{ grid-template-columns: repeat(3, 1fr); gap: 25px; }
 
-        /* --- Fixed width and horizontal items for About - Support - Dealers --- */
-        .about-menu,
-        .support-menu,
-        .dealers-menu {
+        /* Why CellGate expansion behavior */
+        .why-menu .mega-menu-content{ grid-template-columns: 1fr; transition: all 0.3s ease; }
+        .why-menu.expanded .mega-menu-content{ grid-template-columns: repeat(2, 1fr); }
+
+        /* Fixed width and horizontal items for About - Support - Dealers */
+        .about-menu, .support-menu, .dealers-menu{
             min-width: var(--fixed-dropdown-width) !important;
             width: var(--fixed-dropdown-width) !important;
             max-width: var(--fixed-dropdown-width) !important;
         }
-
         .about-menu .mega-menu-content,
         .support-menu .mega-menu-content,
-        .dealers-menu .mega-menu-content {
-            display: block;
-            text-align: center;
-            padding: 25px 30px !important;
+        .dealers-menu .mega-menu-content{
+            display: block; text-align: center; padding: 25px 30px !important;
+        }
+        .about-menu .menu-column, .support-menu .menu-column, .dealers-menu .menu-column{ width: 100%; }
+
+        .about-menu .column-title, .support-menu .column-title, .dealers-menu .column-title{
+            text-align: center; border-bottom: 2px solid #52A6A5; padding-bottom: 10px; margin-bottom: 16px; font-size: 13px;
         }
 
-        .about-menu .menu-column,
-        .support-menu .menu-column,
-        .dealers-menu .menu-column {
-            min-width: auto;
-            width: 100%;
-        }
-
-        .about-menu .column-title,
-        .support-menu .column-title,
-        .dealers-menu .column-title {
-            text-align: center;
-            border-bottom: 2px solid #52A6A5;
-            padding-bottom: 10px;
-            margin-bottom: 16px;
-            font-size: 13px;
-        }
-
-        /* Make lists horizontal - single row - no wrapping */
+        /* Spread items across full width - equal columns - single row */
         .about-menu .support-links,
         .support-menu .support-links,
-        .dealers-menu .support-links {
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-            align-items: center;
-            gap: 28px;
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            flex-wrap: nowrap;
-            white-space: nowrap;
+        .dealers-menu .support-links{
+            display: flex; flex-direction: row; align-items: center;
+            justify-content: space-evenly; /* evenly spreads items including edges */
+            gap: 0; list-style: none; margin: 0; padding: 0;
+            width: 100%; flex-wrap: nowrap; white-space: nowrap;
         }
-
         .about-menu .support-links li,
         .support-menu .support-links li,
-        .dealers-menu .support-links li {
-            display: inline-flex;
+        .dealers-menu .support-links li{
+            display: inline-flex; flex: 1 1 0; min-width: 0;
         }
-
         .about-menu .support-link,
         .support-menu .support-link,
-        .dealers-menu .support-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 8px 14px;
-            margin: 0; /* kill vertical spacing so items stay in one line */
-            font-size: 14px;
-            white-space: nowrap;
+        .dealers-menu .support-link{
+            display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+            width: 100%; padding: 10px 18px; margin: 0; font-size: 14px; white-space: nowrap;
         }
-        /* --- End fixed width and horizontal items --- */
-        
-        /* Column Styles */
-        .menu-column {
-            min-width: 200px;
-        }
-        
-        .column-title {
-            font-size: 13px;
-            font-weight: 700;
-            color: #1A1A1A;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 15px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid #52A6A5;
-        }
-        
-        .product-list {
-            list-style: none;
-        }
-        
-        .product-item {
-            margin-bottom: 8px;
-            padding: 8px;
-            border-radius: 4px;
-            transition: all 0.2s;
-            cursor: pointer;
-            border-left: 3px solid transparent;
-        }
-        
-        .product-item:hover {
-            background: #f8f8f8;
-            transform: translateX(5px);
-            border-left-color: #52A6A5;
-        }
-        
-        .product-link {
-            text-decoration: none;
-            color: #333;
-            display: block;
-        }
-        
-        .product-name {
-            font-weight: 500;
-            color: #0066CC;
-            font-size: 14px;
-            margin-bottom: 3px;
-        }
-        
-        .product-meta {
-            font-size: 12px;
-            color: #666;
-            margin-bottom: 2px;
-        }
-        
-        /* Solution Items */
-        .solution-list {
-            list-style: none;
-        }
-        
-        .solution-item {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 12px;
-            margin-bottom: 10px;
-            border-radius: 6px;
-            transition: all 0.2s;
-            cursor: pointer;
-            text-decoration: none;
-            color: #333;
-            background: #f8f8f8;
-        }
-        
-        .solution-item:hover {
-            background: #E8F5F3;
-            transform: translateX(5px);
-            box-shadow: 0 2px 8px rgba(82,166,165,0.2);
-            border: 2px solid #333;
-        }
-        
-        .solution-icon {
-            font-size: 24px;
-            color: #52A6A5;
-        }
-        
-        .solution-text {
-            flex: 1;
-        }
-        
-        .solution-name {
-            font-weight: 600;
-            color: #333;
-            display: block;
-            font-size: 15px;
-            margin-bottom: 2px;
-        }
-        
-        .solution-desc {
-            font-size: 12px;
-            color: #666;
-        }
-        
-        /* Dynamic Solution Message */
-        .solution-message {
-            background: #f5f5f5;
-            border: 3px solid #52A6A5;
-            color: #333;
-            padding: 25px;
-            border-radius: 8px;
-            margin-top: 20px;
-            box-shadow: 0 4px 12px rgba(82,166,165,0.3);
-            min-height: 150px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.3s;
-            text-decoration: none;
-        }
-        
-        .solution-message:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(82,166,165,0.4);
-        }
-        
-        .solution-message-title {
-            font-size: 18px;
-            font-weight: 600;
-            margin-bottom: 12px;
-        }
-        
-        .solution-message-desc {
-            font-size: 14px;
-            opacity: 0.95;
-            line-height: 1.6;
-            margin-bottom: 15px;
-        }
-        
-        .solution-message-link {
-            display: inline-block;
-            color: white;
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 600;
-            padding: 10px 20px;
-            background: rgba(255,255,255,0.2);
-            border-radius: 4px;
-            transition: all 0.2s;
-        }
-        
-        .solution-message-link:hover {
-            background: rgba(255,255,255,0.3);
-            transform: translateX(3px);
-        }
-        
-        /* Support Links */
-        .support-links {
-            list-style: none;
-        }
-        
-        .support-link {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 10px;
-            margin-bottom: 6px;
-            color: #333;
-            text-decoration: none;
-            border-radius: 4px;
-            font-size: 14px;
-            transition: all 0.2s;
-        }
-        
-        .support-link:hover {
-            background: #E8F5F3;
-            color: #0066CC;
-            transform: translateX(3px);
-        }
-        
-        .support-icon {
-            color: #52A6A5;
-            font-size: 16px;
-        }
-        
-        /* TPSA Prominent Link - now an image */
-        .tpsa-prominent-link {
-            display: block;
-            margin-bottom: 20px;
-            text-decoration: none;
-            transition: all 0.3s;
-        }
-        
-        .tpsa-prominent-link img {
-            width: 100%;
-            height: auto;
-            display: block;
-            border-radius: 8px;
-        }
-        
-        .tpsa-prominent-link:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(82,166,165,0.5);
-        }
-        
-        /* Featured Boxes */
-        .featured-box {
-            background: #0066CC;
-            color: white;
-            padding: 25px;
-            border-radius: 8px;
-            margin-top: 20px;
-            box-shadow: 0 4px 12px rgba(0,102,204,0.2);
-        }
-        
-        .featured-gold {
-            background: linear-gradient(135deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3)), 
-                        url('https://i.ibb.co/QFZ5W8CB/20220818-cellgate-427.jpg') center/cover;
-            color: white;
-        }
-        
-        .featured-green {
-            background: #52A6A5;
-        }
-        
-        .featured-blue {
-            background: #0066CC;
-        }
-        
-        .featured-title {
-            font-size: 18px;
-            font-weight: 600;
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        .featured-desc {
-            font-size: 14px;
-            opacity: 0.95;
-            line-height: 1.6;
-            margin-bottom: 15px;
-        }
-        
-        .featured-link {
-            display: inline-block;
-            color: white;
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 600;
-            padding: 10px 20px;
-            background: rgba(255,255,255,0.2);
-            border-radius: 4px;
-            transition: all 0.2s;
-        }
-        
-        .featured-link:hover {
-            background: rgba(255,255,255,0.3);
-            transform: translateX(3px);
-        }
-        
-        /* Quick Actions */
-        .quick-actions {
-            background: #f8f8f8;
-            border-radius: 8px;
-            padding: 20px;
-        }
-        
-        .action-btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            width: 100%;
-            padding: 12px;
-            margin-bottom: 10px;
-            background: #fff;
-            border: 2px solid #e0e0e0;
-            border-radius: 6px;
-            color: #333;
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 14px;
-            transition: all 0.2s;
-        }
-        
-        .action-btn:hover {
-            border-color: #52A6A5;
-            color: #52A6A5;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
-        
-        .action-primary {
-            background: #0066CC;
-            color: white;
-            border-color: #0066CC;
-        }
-        
-        .action-primary:hover {
-            background: #004499;
-            border-color: #004499;
-            color: white;
-        }
-        
-        /* Contact Button */
-        .nav-item.contact-item .nav-link {
-            background: #DA291C;
-            color: white;
-            padding: 8px 20px;
-            border-radius: 4px;
-            border: none;
-        }
-        
-        .nav-item.contact-item .nav-link:hover {
-            background: #B92215;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(218,41,28,0.3);
-        }
-        
-        /* Mobile Navigation Overlay */
-        .mobile-nav-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: #fff;
-            z-index: 999;
-            overflow-y: auto;
-        }
-        
-        .mobile-nav-overlay.active {
-            display: block;
-        }
-        
-        .mobile-nav-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 20px;
-            border-bottom: 1px solid #eee;
-        }
-        
-        .mobile-nav-close {
-            background: none;
-            border: none;
-            font-size: 30px;
-            cursor: pointer;
-        }
-        
-        .mobile-nav-list {
-            list-style: none;
-            padding: 20px;
-        }
-        
-        .mobile-nav-item {
-            margin-bottom: 15px;
-        }
-        
-        .mobile-nav-link {
-            display: block;
-            padding: 12px 15px;
-            color: #333;
-            text-decoration: none;
-            font-weight: 500;
-            background: #f8f8f8;
-            border-radius: 4px;
-            transition: background 0.2s;
-        }
-        
-        .mobile-nav-link:hover {
-            background: #e8f4ff;
-        }
-        
-        .mobile-submenu {
-            list-style: none;
-            padding-left: 20px;
-            margin-top: 10px;
-        }
-        
-        .mobile-submenu-item {
-            margin-bottom: 8px;
-        }
-        
-        .mobile-submenu-link {
-            display: block;
-            padding: 8px 12px;
-            color: #666;
-            text-decoration: none;
-            font-size: 14px;
-        }
-        
-        .mobile-submenu-link:hover {
-            color: #0066cc;
-        }
-        
-        /* Responsive Styles */
-        @media (max-width: 1200px) {
-            .mega-menu {
-                min-width: 700px;
-                max-width: 900px;
-            }
-            
-            .mega-menu-content {
-                padding: 30px;
-                gap: 30px;
-            }
 
-            /* Keep fixed menus consistent on medium viewports */
-            .about-menu,
-            .support-menu,
-            .dealers-menu {
+        /* Columns and lists */
+        .menu-column{ min-width: 200px; }
+        .column-title{
+            font-size: 13px; font-weight: 700; color: #1A1A1A; text-transform: uppercase; letter-spacing: 1px;
+            margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #52A6A5;
+        }
+        .product-list{ list-style: none; }
+        .product-item{ margin-bottom: 8px; padding: 8px; border-radius: 4px; transition: all 0.2s; cursor: pointer; border-left: 3px solid transparent; }
+        .product-item:hover{ background: #f8f8f8; transform: translateX(5px); border-left-color: #52A6A5; }
+        .product-link{ text-decoration: none; color: #333; display: block; }
+        .product-name{ font-weight: 500; color: #0066CC; font-size: 14px; margin-bottom: 3px; }
+        .product-meta{ font-size: 12px; color: #666; margin-bottom: 2px; }
+
+        /* Solutions list */
+        .solution-list{ list-style: none; }
+        .solution-item{
+            display: flex; align-items: center; gap: 12px; padding: 12px; margin-bottom: 10px; border-radius: 6px;
+            transition: all 0.2s; cursor: pointer; text-decoration: none; color: #333; background: #f8f8f8;
+        }
+        .solution-item:hover{ background: #E8F5F3; transform: translateX(5px); box-shadow: 0 2px 8px rgba(82,166,165,0.2); border: 2px solid #333; }
+        .solution-icon{ font-size: 24px; color: #52A6A5; }
+        .solution-text{ flex: 1; }
+        .solution-name{ font-weight: 600; color: #333; display: block; font-size: 15px; margin-bottom: 2px; }
+        .solution-desc{ font-size: 12px; color: #666; }
+
+        /* Dynamic Solution Message */
+        .solution-message{
+            background: #f5f5f5; border: 3px solid #52A6A5; color: #333; padding: 25px; border-radius: 8px; margin-top: 20px;
+            box-shadow: 0 4px 12px rgba(82,166,165,0.3); min-height: 150px; display: flex; flex-direction: column; justify-content: center;
+            align-items: center; text-align: center; cursor: pointer; transition: all 0.3s; text-decoration: none;
+        }
+        .solution-message:hover{ transform: translateY(-2px); box-shadow: 0 6px 16px rgba(82,166,165,0.4); }
+
+        /* Support links default behavior */
+        .support-links{ list-style: none; }
+        .support-link{
+            display: flex; align-items: center; gap: 10px; padding: 10px; margin-bottom: 6px; color: #333; text-decoration: none;
+            border-radius: 4px; font-size: 14px; transition: all 0.2s;
+        }
+        .support-link:hover{ background: #E8F5F3; color: #0066CC; transform: translateX(3px); }
+        .support-icon{ color: #52A6A5; font-size: 16px; }
+
+        /* TPSA prominent image */
+        .tpsa-prominent-link{ display: block; margin-bottom: 20px; text-decoration: none; transition: all 0.3s; }
+        .tpsa-prominent-link img{ width: 100%; height: auto; display: block; border-radius: 8px; }
+        .tpsa-prominent-link:hover{ transform: translateY(-3px); box-shadow: 0 6px 20px rgba(82,166,165,0.5); }
+
+        /* Quick actions - kept for parity, not shown in this menu */
+        .quick-actions{ background: #f8f8f8; border-radius: 8px; padding: 20px; }
+        .action-btn{
+            display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; padding: 12px; margin-bottom: 10px;
+            background: #fff; border: 2px solid #e0e0e0; border-radius: 6px; color: #333; text-decoration: none; font-weight: 500; font-size: 14px; transition: all 0.2s;
+        }
+        .action-btn:hover{ border-color: #52A6A5; color: #52A6A5; transform: translateY(-2px); box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+        .action-primary{ background: #0066CC; color: #fff; border-color: #0066CC; }
+        .action-primary:hover{ background: #004499; border-color: #004499; color: #fff; }
+
+        /* Contact button */
+        .nav-item.contact-item .nav-link{ background: #DA291C; color: #fff; padding: 8px 20px; border-radius: 4px; border: none; }
+        .nav-item.contact-item .nav-link:hover{ background: #B92215; transform: translateY(-2px); box-shadow: 0 4px 8px rgba(218,41,28,0.3); }
+
+        /* Mobile overlay */
+        .mobile-nav-overlay{ display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #fff; z-index: 999; overflow-y: auto; }
+        .mobile-nav-overlay.active{ display: block; }
+        .mobile-nav-header{ display: flex; justify-content: space-between; align-items: center; padding: 15px 20px; border-bottom: 1px solid #eee; }
+        .mobile-nav-close{ background: none; border: none; font-size: 30px; cursor: pointer; }
+        .mobile-nav-list{ list-style: none; padding: 20px; }
+        .mobile-nav-item{ margin-bottom: 15px; }
+        .mobile-nav-link{ display: block; padding: 12px 15px; color: #333; text-decoration: none; font-weight: 500; background: #f8f8f8; border-radius: 4px; transition: background 0.2s; }
+        .mobile-nav-link:hover{ background: #e8f4ff; }
+        .mobile-submenu{ list-style: none; padding-left: 20px; margin-top: 10px; }
+        .mobile-submenu-item{ margin-bottom: 8px; }
+        .mobile-submenu-link{ display: block; padding: 8px 12px; color: #666; text-decoration: none; font-size: 14px; }
+        .mobile-submenu-link:hover{ color: #0066cc; }
+
+        /* Responsive */
+        @media (max-width: 1200px){
+            .mega-menu{ min-width: 700px; max-width: 900px; }
+            .mega-menu-content{ padding: 30px; gap: 30px; }
+            .about-menu, .support-menu, .dealers-menu{
                 min-width: var(--fixed-dropdown-width) !important;
                 width: var(--fixed-dropdown-width) !important;
                 max-width: var(--fixed-dropdown-width) !important;
             }
         }
-        
-        @media (max-width: 992px) {
-            .main-nav {
-                gap: 20px;
-            }
-            
-            .nav-link {
-                font-size: 14px;
-            }
-            
-            .mega-menu {
-                min-width: 600px;
-                max-width: 700px;
-            }
-            
-            .products-menu .mega-menu-content {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .about-menu,
-            .support-menu,
-            .dealers-menu {
-                min-width: 700px !important;
-                width: 700px !important;
-                max-width: 700px !important;
+        @media (max-width: 992px){
+            .main-nav{ gap: 20px; }
+            .nav-link{ font-size: 14px; }
+            .mega-menu{ min-width: 600px; max-width: 700px; }
+            .products-menu .mega-menu-content{ grid-template-columns: repeat(2, 1fr); }
+            .about-menu, .support-menu, .dealers-menu{
+                min-width: 700px !important; width: 700px !important; max-width: 700px !important;
             }
         }
-        
-        @media (max-width: 768px) {
-            /* Hide desktop navigation */
-            nav {
-                display: none;
-            }
-            
-            /* Show mobile menu button */
-            .mobile-menu-button {
-                display: block;
-            }
-            
-            .logo {
-                margin-right: 0;
-            }
-            
-            .logo img {
-                height: 35px;
-            }
-            
-            .top-links {
-                display: none;
-            }
-            
-            .top-bar .container {
-                justify-content: center;
-            }
-            
-            .top-links:first-child {
-                display: block;
-            }
+        @media (max-width: 768px){
+            nav{ display: none; }
+            .mobile-menu-button{ display: block; }
+            .logo{ margin-right: 0; }
+            .logo img{ height: 35px; }
+            .top-links{ display: none; }
+            .top-bar .container{ justify-content: center; }
+            .top-links:first-child{ display: block; }
         }
-        
-        @media (max-width: 480px) {
-            .container {
-                padding: 0 15px;
-            }
-            
-            .logo img {
-                height: 30px;
-            }
-            
-            .mobile-nav-list {
-                padding: 15px;
-            }
+        @media (max-width: 480px){
+            .container{ padding: 0 15px; }
+            .logo img{ height: 30px; }
+            .mobile-nav-list{ padding: 15px; }
         }
     </style>
 </head>
@@ -789,28 +232,24 @@
             </div>
         </div>
     </div>
-    
-    <!-- Header with Navigation -->
+
+    <!-- Header -->
     <header class="header">
         <div class="container">
             <div class="logo-nav">
-                <!-- Logo -->
                 <div class="logo">
                     <a href="https://cell-gate.com/">
-                        <img src="https://cell-gate.com/wp-content/uploads/2025/08/CellGate-TPSA-Total-Pgffdgthjroperty-Security-Access-Logo-Wired-Where-You-Need-it-Wireless-Where-You-Have-It-1.png" alt="CellGate">
+                        <img src="https://cell-gate.com/wp-content/uploads/2025/08/CellGate-TPSA-Total-Pgffdgthjroperty-Security-Access-Logo-Wired-Where-You-Need-it-Wireless-Where-You-Have-It-1.png" alt="CellGate" />
                     </a>
                 </div>
-                
-                <!-- Mobile Menu Button -->
+
                 <button class="mobile-menu-button" onclick="toggleMobileMenu()" aria-label="Toggle menu">
-                    <span></span>
-                    <span></span>
-                    <span></span>
+                    <span></span><span></span><span></span>
                 </button>
-                
+
                 <nav>
                     <ul class="main-nav">
-                        <!-- SOLUTIONS MENU -->
+                        <!-- SOLUTIONS -->
                         <li class="nav-item">
                             <a href="https://cell-gate.com/access-control-solutions/" class="nav-link has-dropdown">Solutions</a>
                             <div class="mega-menu solutions-menu" role="menu" aria-label="Solutions">
@@ -819,8 +258,7 @@
                                         <h3 class="column-title">By Market</h3>
                                         <ul class="solution-list">
                                             <a href="https://cell-gate.com/watchman/multi-family/" class="solution-item" 
-                                               onmouseover="updateSolutionMessage('multi')"
-                                               onmouseout="resetSolutionMessage()">
+                                               onmouseover="updateSolutionMessage('multi')" onmouseout="resetSolutionMessage()">
                                                 <div class="solution-icon">🏘️</div>
                                                 <div class="solution-text">
                                                     <span class="solution-name">Multi-Family</span>
@@ -828,8 +266,7 @@
                                                 </div>
                                             </a>
                                             <a href="https://cell-gate.com/access-control-solutions/singlefamily-old/" class="solution-item"
-                                               onmouseover="updateSolutionMessage('single')"
-                                               onmouseout="resetSolutionMessage()">
+                                               onmouseover="updateSolutionMessage('single')" onmouseout="resetSolutionMessage()">
                                                 <div class="solution-icon">🏠</div>
                                                 <div class="solution-text">
                                                     <span class="solution-name">Single-Family</span>
@@ -837,8 +274,7 @@
                                                 </div>
                                             </a>
                                             <a href="https://cell-gate.com/access-control-solutions/" class="solution-item"
-                                               onmouseover="updateSolutionMessage('commercial')"
-                                               onmouseout="resetSolutionMessage()">
+                                               onmouseover="updateSolutionMessage('commercial')" onmouseout="resetSolutionMessage()">
                                                 <div class="solution-icon">🏢</div>
                                                 <div class="solution-text">
                                                     <span class="solution-name">Commercial</span>
@@ -847,27 +283,25 @@
                                             </a>
                                         </ul>
                                     </div>
-                                    
                                     <div class="menu-column">
                                         <a href="https://cell-gate.com/" id="solutionMessage" class="solution-message">
-                                            <img src="https://cell-gate.com/wp-content/uploads/2025/06/HOA.jpeg" alt="Solutions" style="max-width: 100%; height: auto; border-radius: 8px;">
+                                            <img src="https://cell-gate.com/wp-content/uploads/2025/06/HOA.jpeg" alt="Solutions" style="max-width: 100%; height: auto; border-radius: 8px;" />
                                         </a>
                                     </div>
                                 </div>
                                 <div style="text-align: center; padding: 5px 40px 20px;">
                                     <a href="https://cell-gate.com/">
-                                        <img src="https://cell-gate.com/wp-content/uploads/2025/10/Untitled-design-6.png" alt="TPSA Logo" style="max-width: 400px; height: auto;">
+                                        <img src="https://cell-gate.com/wp-content/uploads/2025/10/Untitled-design-6.png" alt="TPSA Logo" style="max-width: 400px; height: auto;" />
                                     </a>
                                 </div>
                             </div>
                         </li>
-                        
-                        <!-- PRODUCTS MENU -->
+
+                        <!-- PRODUCTS -->
                         <li class="nav-item">
                             <a href="https://cell-gate.com/watchman/" class="nav-link has-dropdown">Products</a>
                             <div class="mega-menu products-menu" role="menu" aria-label="Products">
                                 <div class="mega-menu-content">
-                                    <!-- Column 1: Video Intercom -->
                                     <div class="menu-column">
                                         <h3 class="column-title">Video Intercom</h3>
                                         <h4 style="font-size: 13px; color: #666; margin: 10px 0 8px; font-weight: 600;">Live Video Telephone Entry</h4>
@@ -904,11 +338,9 @@
                                             </li>
                                         </ul>
                                     </div>
-                                    
-                                    <!-- Column 2: Access Control -->
+
                                     <div class="menu-column">
                                         <h3 class="column-title">Access Control</h3>
-                                        
                                         <h4 style="font-size: 13px; color: #666; margin: 10px 0 8px; font-weight: 600;">Wireless Multi-Point Access Control</h4>
                                         <ul class="product-list">
                                             <li class="product-item">
@@ -918,7 +350,6 @@
                                                 </a>
                                             </li>
                                         </ul>
-                                        
                                         <h4 style="font-size: 13px; color: #666; margin: 15px 0 8px; font-weight: 600;">Wireless & Wired Controllers</h4>
                                         <ul class="product-list">
                                             <li class="product-item">
@@ -934,7 +365,6 @@
                                                 </a>
                                             </li>
                                         </ul>
-                                        
                                         <h4 style="font-size: 13px; color: #666; margin: 15px 0 8px; font-weight: 600;">Readers & Credentials</h4>
                                         <ul class="product-list">
                                             <li class="product-item">
@@ -957,14 +387,10 @@
                                             </li>
                                         </ul>
                                     </div>
-                                    
-                                    <!-- Column 3: Visitor Management -->
+
                                     <div class="menu-column">
                                         <h3 class="column-title">Visitor Management</h3>
-                                        
-                                        <div style="background: url('https://cell-gate.com/wp-content/uploads/2025/10/20220818_cellgate_527.jpg') center/cover; 
-                                                    border: 2px solid #52A6A5; border-radius: 8px; padding: 25px 15px; margin-bottom: 10px; 
-                                                    box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+                                        <div style="background: url('https://cell-gate.com/wp-content/uploads/2025/10/20220818_cellgate_527.jpg') center/cover; border: 2px solid #52A6A5; border-radius: 8px; padding: 25px 15px; margin-bottom: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
                                             <h4 style="font-size: 14px; font-weight: 700; color: white; margin-bottom: 10px; text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">Access Credentials</h4>
                                             <div style="margin-left: 15px;">
                                                 <h5 style="font-size: 13px; font-weight: 600; color: white; margin: 8px 0 6px; text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">Visitors</h5>
@@ -982,70 +408,60 @@
                                 </div>
                                 <div style="text-align: center; padding: 5px 40px 20px;">
                                     <a href="https://cell-gate.com/">
-                                        <img src="https://cell-gate.com/wp-content/uploads/2025/10/Untitled-design-6.png" alt="TPSA Logo" style="max-width: 400px; height: auto;">
+                                        <img src="https://cell-gate.com/wp-content/uploads/2025/10/Untitled-design-6.png" alt="TPSA Logo" style="max-width: 400px; height: auto;" />
                                     </a>
                                 </div>
                             </div>
                         </li>
-                        
-                        <!-- WHY CELLGATE MENU -->
+
+                        <!-- WHY CELLGATE -->
                         <li class="nav-item">
                             <a href="https://cell-gate.com/how-it-works/" class="nav-link has-dropdown">Why CellGate</a>
                             <div class="mega-menu why-menu" id="whyMegaMenu" role="menu" aria-label="Why CellGate">
                                 <div class="mega-menu-content" id="whyMenuContainer">
                                     <div class="menu-column">
                                         <a href="https://cell-gate.com/" class="tpsa-prominent-link">
-                                            <img src="https://cell-gate.com/wp-content/uploads/2025/10/Untitled-design-12.png" alt="Total Property Security Access">
+                                            <img src="https://cell-gate.com/wp-content/uploads/2025/10/Untitled-design-12.png" alt="Total Property Security Access" />
                                         </a>
-                                        
+
                                         <ul class="support-links">
                                             <li>
-                                                <a href="https://cell-gate.com/how-it-works/" class="support-link benefit-link"
-                                                   data-feature="howItWorks">
-                                                    <span class="support-icon">🔍</span>
-                                                    How It Works
+                                                <a href="https://cell-gate.com/how-it-works/" class="support-link benefit-link" data-feature="howItWorks">
+                                                    <span class="support-icon">🔍</span> How It Works
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="https://cell-gate.com/cellgate-app/" class="support-link benefit-link"
-                                                   data-feature="control">
-                                                    <span class="support-icon">📱</span>
-                                                    CellGate App
+                                                <a href="https://cell-gate.com/cellgate-app/" class="support-link benefit-link" data-feature="control">
+                                                    <span class="support-icon">📱</span> CellGate App
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="https://cell-gate.com/truecloud/" class="support-link benefit-link"
-                                                   data-feature="centralized">
-                                                    <span class="support-icon">☁️</span>
-                                                    TrueCloud Connect
+                                                <a href="https://cell-gate.com/truecloud/" class="support-link benefit-link" data-feature="centralized">
+                                                    <span class="support-icon">☁️</span> TrueCloud Connect
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="https://cell-gate.com/gold-key-service/" class="support-link benefit-link"
-                                                   data-feature="support">
-                                                    <span class="support-icon">🔑</span>
-                                                    Gold Key Service/Support Services
+                                                <a href="https://cell-gate.com/gold-key-service/" class="support-link benefit-link" data-feature="support">
+                                                    <span class="support-icon">🔑</span> Gold Key Service/Support Services
                                                 </a>
                                             </li>
                                             <li>
-                                                <!-- Blog now participates in the right-hand preview -->
-                                                <a href="https://cell-gate.com/blog/" class="support-link benefit-link"
-                                                   data-feature="blog">
-                                                    <span class="support-icon">📝</span>
-                                                    Blog
+                                                <!-- Blog shows an image on the right -->
+                                                <a href="https://cell-gate.com/blog/" class="support-link benefit-link" data-feature="blog">
+                                                    <span class="support-icon">📝</span> Blog
                                                 </a>
                                             </li>
                                         </ul>
                                     </div>
-                                    
+
                                     <div class="menu-column" id="whyMessage" style="display: none;">
-                                        <!-- Content will be dynamically inserted here on hover or when on blog -->
+                                        <!-- Filled dynamically -->
                                     </div>
                                 </div>
                             </div>
                         </li>
-                        
-                        <!-- ABOUT US MENU -->
+
+                        <!-- ABOUT US -->
                         <li class="nav-item">
                             <a href="https://cell-gate.com/about-us/" class="nav-link has-dropdown">About Us</a>
                             <div class="mega-menu about-menu" role="menu" aria-label="About Us">
@@ -1055,20 +471,17 @@
                                         <ul class="support-links">
                                             <li>
                                                 <a href="https://cell-gate.com/about-us/" class="support-link">
-                                                    <span class="support-icon">👥</span>
-                                                    Our Team
+                                                    <span class="support-icon">👥</span> Our Team
                                                 </a>
                                             </li>
                                             <li>
                                                 <a href="https://cell-gate.com/about-us/" class="support-link">
-                                                    <span class="support-icon">📖</span>
-                                                    Our Story
+                                                    <span class="support-icon">📖</span> Our Story
                                                 </a>
                                             </li>
                                             <li>
                                                 <a href="https://cell-gate.com/news/" class="support-link">
-                                                    <span class="support-icon">📰</span>
-                                                    News
+                                                    <span class="support-icon">📰</span> News
                                                 </a>
                                             </li>
                                         </ul>
@@ -1076,13 +489,13 @@
                                 </div>
                                 <div style="text-align: center; padding: 20px 40px 30px;">
                                     <a href="https://cell-gate.com/">
-                                        <img src="https://cell-gate.com/wp-content/uploads/2025/10/Untitled-design-6.png" alt="TPSA Logo" style="max-width: 400px; height: auto;">
+                                        <img src="https://cell-gate.com/wp-content/uploads/2025/10/Untitled-design-6.png" alt="TPSA Logo" style="max-width: 400px; height: auto;" />
                                     </a>
                                 </div>
                             </div>
                         </li>
-                        
-                        <!-- SUPPORT MENU -->
+
+                        <!-- SUPPORT -->
                         <li class="nav-item">
                             <a href="https://cell-gate.com/resources/" class="nav-link has-dropdown">Support</a>
                             <div class="mega-menu support-menu" role="menu" aria-label="Support">
@@ -1092,20 +505,17 @@
                                         <ul class="support-links">
                                             <li>
                                                 <a href="https://cell-gate.com/dealer-resources/support-video-guides/" class="support-link">
-                                                    <span class="support-icon">🎥</span>
-                                                    Video & Support Guides
+                                                    <span class="support-icon">🎥</span> Video & Support Guides
                                                 </a>
                                             </li>
                                             <li>
                                                 <a href="https://cell-gate.com/gold-key-service/" class="support-link">
-                                                    <span class="support-icon">🔑</span>
-                                                    Gold Key Service & Support
+                                                    <span class="support-icon">🔑</span> Gold Key Service & Support
                                                 </a>
                                             </li>
                                             <li>
                                                 <a href="https://cell-gate.com/faqs/" class="support-link">
-                                                    <span class="support-icon">❓</span>
-                                                    FAQs
+                                                    <span class="support-icon">❓</span> FAQs
                                                 </a>
                                             </li>
                                         </ul>
@@ -1113,13 +523,13 @@
                                 </div>
                                 <div style="text-align: center; padding: 20px 40px 30px;">
                                     <a href="https://cell-gate.com/">
-                                        <img src="https://cell-gate.com/wp-content/uploads/2025/10/Untitled-design-6.png" alt="TPSA Logo" style="max-width: 400px; height: auto;">
+                                        <img src="https://cell-gate.com/wp-content/uploads/2025/10/Untitled-design-6.png" alt="TPSA Logo" style="max-width: 400px; height: auto;" />
                                     </a>
                                 </div>
                             </div>
                         </li>
-                        
-                        <!-- DEALERS MENU -->
+
+                        <!-- DEALERS -->
                         <li class="nav-item">
                             <a href="https://cell-gate.com/dealer-inquiries/" class="nav-link has-dropdown">Dealers</a>
                             <div class="mega-menu dealers-menu" role="menu" aria-label="Dealers">
@@ -1129,20 +539,17 @@
                                         <ul class="support-links">
                                             <li>
                                                 <a href="https://cell-gate.com/dealer-inquiries/" class="support-link">
-                                                    <span class="support-icon">🤝</span>
-                                                    Become a Dealer
+                                                    <span class="support-icon">🤝</span> Become a Dealer
                                                 </a>
                                             </li>
                                             <li>
                                                 <a href="https://cell-gate.com/technical-support/" class="support-link">
-                                                    <span class="support-icon">🛠️</span>
-                                                    Dealer Support
+                                                    <span class="support-icon">🛠️</span> Dealer Support
                                                 </a>
                                             </li>
                                             <li>
                                                 <a href="https://cell-gate.com/events/" class="support-link">
-                                                    <span class="support-icon">📅</span>
-                                                    Events & Shows
+                                                    <span class="support-icon">📅</span> Events & Shows
                                                 </a>
                                             </li>
                                         </ul>
@@ -1150,275 +557,182 @@
                                 </div>
                                 <div style="text-align: center; padding: 20px 40px 30px;">
                                     <a href="https://cell-gate.com/">
-                                        <img src="https://cell-gate.com/wp-content/uploads/2025/10/Untitled-design-6.png" alt="TPSA Logo" style="max-width: 400px; height: auto;">
+                                        <img src="https://cell-gate.com/wp-content/uploads/2025/10/Untitled-design-6.png" alt="TPSA Logo" style="max-width: 400px; height: auto;" />
                                     </a>
                                 </div>
                             </div>
                         </li>
-                        
+
                         <!-- CONTACT -->
                         <li class="nav-item contact-item">
                             <a href="https://cell-gate.com/contact-us/" class="nav-link">Contact</a>
                         </li>
                     </ul>
                 </nav>
+
             </div>
         </div>
     </header>
-    
+
     <!-- Mobile Navigation Overlay -->
     <div class="mobile-nav-overlay" id="mobileNavOverlay">
         <div class="mobile-nav-header">
             <div class="logo">
-                <img src="https://cell-gate.com/wp-content/uploads/2025/08/CellGate-TPSA-Total-Pgffdgthjroperty-Security-Access-Logo-Wired-Where-You-Need-it-Wireless-Where-You-Have-It-1.png" alt="CellGate" style="height: 35px;">
+                <img src="https://cell-gate.com/wp-content/uploads/2025/08/CellGate-TPSA-Total-Pgffdgthjroperty-Security-Access-Logo-Wired-Where-You-Need-it-Wireless-Where-You-Have-It-1.png" alt="CellGate" style="height: 35px;" />
             </div>
             <button class="mobile-nav-close" onclick="toggleMobileMenu()" aria-label="Close menu">×</button>
         </div>
-        
+
         <ul class="mobile-nav-list">
             <li class="mobile-nav-item">
                 <a href="https://cell-gate.com/access-control-solutions/" class="mobile-nav-link">SOLUTIONS</a>
                 <ul class="mobile-submenu">
-                    <li class="mobile-submenu-item">
-                        <a href="https://cell-gate.com/watchman/multi-family/" class="mobile-submenu-link">Multi-Family</a>
-                    </li>
-                    <li class="mobile-submenu-item">
-                        <a href="https://cell-gate.com/access-control-solutions/singlefamily-old/" class="mobile-submenu-link">Single-Family</a>
-                    </li>
-                    <li class="mobile-submenu-item">
-                        <a href="https://cell-gate.com/access-control-solutions/" class="mobile-submenu-link">Commercial</a>
-                    </li>
+                    <li class="mobile-submenu-item"><a href="https://cell-gate.com/watchman/multi-family/" class="mobile-submenu-link">Multi-Family</a></li>
+                    <li class="mobile-submenu-item"><a href="https://cell-gate.com/access-control-solutions/singlefamily-old/" class="mobile-submenu-link">Single-Family</a></li>
+                    <li class="mobile-submenu-item"><a href="https://cell-gate.com/access-control-solutions/" class="mobile-submenu-link">Commercial</a></li>
                 </ul>
             </li>
-            
+
             <li class="mobile-nav-item">
                 <a href="https://cell-gate.com/watchman/" class="mobile-nav-link">PRODUCTS</a>
                 <ul class="mobile-submenu">
-                    <li class="mobile-submenu-item">
-                        <strong style="padding: 8px 12px; display: block; color: #333;">Video Intercom</strong>
-                    </li>
-                    <li class="mobile-submenu-item">
-                        <a href="https://cell-gate.com/watchman/watchman-w410/" class="mobile-submenu-link">W410</a>
-                    </li>
-                    <li class="mobile-submenu-item">
-                        <a href="https://cell-gate.com/watchman/watchman-w450/" class="mobile-submenu-link">W450 series</a>
-                    </li>
-                    <li class="mobile-submenu-item">
-                        <a href="https://cell-gate.com/watchman/watchman-w461/" class="mobile-submenu-link">W461 series</a>
-                    </li>
-                    <li class="mobile-submenu-item">
-                        <a href="https://cell-gate.com/watchman-w480/" class="mobile-submenu-link">W480 series</a>
-                    </li>
-                    <li class="mobile-submenu-item">
-                        <a href="https://cell-gate.com/watchman/watchman-wxl2/" class="mobile-submenu-link">WXL series</a>
-                    </li>
-                    <li class="mobile-submenu-item">
-                        <strong style="padding: 8px 12px; display: block; color: #333; margin-top: 10px;">Access Control</strong>
-                    </li>
-                    <li class="mobile-submenu-item">
-                        <a href="https://cell-gate.com/omnipoint/" class="mobile-submenu-link">OmniPoint</a>
-                    </li>
-                    <li class="mobile-submenu-item">
-                        <a href="https://cell-gate.com/entria/" class="mobile-submenu-link">Entria</a>
-                    </li>
-                    <li class="mobile-submenu-item">
-                        <a href="https://cell-gate.com/readers/" class="mobile-submenu-link">Readers & Credentials</a>
-                    </li>
+                    <li class="mobile-submenu-item"><strong style="padding: 8px 12px; display: block; color: #333;">Video Intercom</strong></li>
+                    <li class="mobile-submenu-item"><a href="https://cell-gate.com/watchman/watchman-w410/" class="mobile-submenu-link">W410</a></li>
+                    <li class="mobile-submenu-item"><a href="https://cell-gate.com/watchman/watchman-w450/" class="mobile-submenu-link">W450 series</a></li>
+                    <li class="mobile-submenu-item"><a href="https://cell-gate.com/watchman/watchman-w461/" class="mobile-submenu-link">W461 series</a></li>
+                    <li class="mobile-submenu-item"><a href="https://cell-gate.com/watchman-w480/" class="mobile-submenu-link">W480 series</a></li>
+                    <li class="mobile-submenu-item"><a href="https://cell-gate.com/watchman/watchman-wxl2/" class="mobile-submenu-link">WXL series</a></li>
+                    <li class="mobile-submenu-item"><strong style="padding: 8px 12px; display: block; color: #333; margin-top: 10px;">Access Control</strong></li>
+                    <li class="mobile-submenu-item"><a href="https://cell-gate.com/omnipoint/" class="mobile-submenu-link">OmniPoint</a></li>
+                    <li class="mobile-submenu-item"><a href="https://cell-gate.com/entria/" class="mobile-submenu-link">Entria</a></li>
+                    <li class="mobile-submenu-item"><a href="https://cell-gate.com/readers/" class="mobile-submenu-link">Readers & Credentials</a></li>
                 </ul>
             </li>
-            
+
             <li class="mobile-nav-item">
                 <a href="https://cell-gate.com/how-it-works/" class="mobile-nav-link">WHY CELLGATE</a>
                 <ul class="mobile-submenu">
-                    <li class="mobile-submenu-item">
-                        <a href="https://cell-gate.com/" class="mobile-submenu-link">Total Property Security Access</a>
-                    </li>
-                    <li class="mobile-submenu-item">
-                        <a href="https://cell-gate.com/how-it-works/" class="mobile-submenu-link">How It Works</a>
-                    </li>
-                    <li class="mobile-submenu-item">
-                        <a href="https://cell-gate.com/cellgate-app/" class="mobile-submenu-link">CellGate App</a>
-                    </li>
-                    <li class="mobile-submenu-item">
-                        <a href="https://cell-gate.com/truecloud/" class="mobile-submenu-link">TrueCloud Connect</a>
-                    </li>
-                    <li class="mobile-submenu-item">
-                        <a href="https://cell-gate.com/gold-key-service/" class="mobile-submenu-link">Gold Key Service</a>
-                    </li>
-                    <li class="mobile-submenu-item">
-                        <a href="https://cell-gate.com/blog/" class="mobile-submenu-link">Blog</a>
-                    </li>
+                    <li class="mobile-submenu-item"><a href="https://cell-gate.com/" class="mobile-submenu-link">Total Property Security Access</a></li>
+                    <li class="mobile-submenu-item"><a href="https://cell-gate.com/how-it-works/" class="mobile-submenu-link">How It Works</a></li>
+                    <li class="mobile-submenu-item"><a href="https://cell-gate.com/cellgate-app/" class="mobile-submenu-link">CellGate App</a></li>
+                    <li class="mobile-submenu-item"><a href="https://cell-gate.com/truecloud/" class="mobile-submenu-link">TrueCloud Connect</a></li>
+                    <li class="mobile-submenu-item"><a href="https://cell-gate.com/gold-key-service/" class="mobile-submenu-link">Gold Key Service</a></li>
+                    <li class="mobile-submenu-item"><a href="https://cell-gate.com/blog/" class="mobile-submenu-link">Blog</a></li>
                 </ul>
             </li>
-            
+
             <li class="mobile-nav-item">
                 <a href="https://cell-gate.com/about-us/" class="mobile-nav-link">ABOUT US</a>
                 <ul class="mobile-submenu">
-                    <li class="mobile-submenu-item">
-                        <a href="https://cell-gate.com/about-us/" class="mobile-submenu-link">Our Team</a>
-                    </li>
-                    <li class="mobile-submenu-item">
-                        <a href="https://cell-gate.com/about-us/" class="mobile-submenu-link">Our Story</a>
-                    </li>
-                    <li class="mobile-submenu-item">
-                        <a href="https://cell-gate.com/news/" class="mobile-submenu-link">News</a>
-                    </li>
+                    <li class="mobile-submenu-item"><a href="https://cell-gate.com/about-us/" class="mobile-submenu-link">Our Team</a></li>
+                    <li class="mobile-submenu-item"><a href="https://cell-gate.com/about-us/" class="mobile-submenu-link">Our Story</a></li>
+                    <li class="mobile-submenu-item"><a href="https://cell-gate.com/news/" class="mobile-submenu-link">News</a></li>
                 </ul>
             </li>
-            
+
             <li class="mobile-nav-item">
                 <a href="https://cell-gate.com/resources/" class="mobile-nav-link">SUPPORT</a>
                 <ul class="mobile-submenu">
-                    <li class="mobile-submenu-item">
-                        <a href="https://cell-gate.com/dealer-resources/support-video-guides/" class="mobile-submenu-link">Video & Support Guides</a>
-                    </li>
-                    <li class="mobile-submenu-item">
-                        <a href="https://cell-gate.com/gold-key-service/" class="mobile-submenu-link">Gold Key Service</a>
-                    </li>
-                    <li class="mobile-submenu-item">
-                        <a href="https://cell-gate.com/faqs/" class="mobile-submenu-link">FAQs</a>
-                    </li>
+                    <li class="mobile-submenu-item"><a href="https://cell-gate.com/dealer-resources/support-video-guides/" class="mobile-submenu-link">Video & Support Guides</a></li>
+                    <li class="mobile-submenu-item"><a href="https://cell-gate.com/gold-key-service/" class="mobile-submenu-link">Gold Key Service</a></li>
+                    <li class="mobile-submenu-item"><a href="https://cell-gate.com/faqs/" class="mobile-submenu-link">FAQs</a></li>
                 </ul>
             </li>
-            
+
             <li class="mobile-nav-item">
                 <a href="https://cell-gate.com/dealer-inquiries/" class="mobile-nav-link">DEALERS</a>
                 <ul class="mobile-submenu">
-                    <li class="mobile-submenu-item">
-                        <a href="https://cell-gate.com/dealer-inquiries/" class="mobile-submenu-link">Become a Dealer</a>
-                    </li>
-                    <li class="mobile-submenu-item">
-                        <a href="https://cell-gate.com/technical-support/" class="mobile-submenu-link">Dealer Support</a>
-                    </li>
-                    <li class="mobile-submenu-item">
-                        <a href="https://cell-gate.com/events/" class="mobile-submenu-link">Events & Shows</a>
-                    </li>
+                    <li class="mobile-submenu-item"><a href="https://cell-gate.com/dealer-inquiries/" class="mobile-submenu-link">Become a Dealer</a></li>
+                    <li class="mobile-submenu-item"><a href="https://cell-gate.com/technical-support/" class="mobile-submenu-link">Dealer Support</a></li>
+                    <li class="mobile-submenu-item"><a href="https://cell-gate.com/events/" class="mobile-submenu-link">Events & Shows</a></li>
                 </ul>
             </li>
-            
+
             <li class="mobile-nav-item">
                 <a href="https://cell-gate.com/contact-us/" class="mobile-nav-link" style="background: #ff6600; color: white; text-align: center;">CONTACT</a>
             </li>
         </ul>
     </div>
-    
+
     <script>
         function toggleMobileMenu() {
             const overlay = document.getElementById('mobileNavOverlay');
             const button = document.querySelector('.mobile-menu-button');
-            
             overlay.classList.toggle('active');
             button.classList.toggle('active');
-            
-            // Prevent body scroll when menu is open
+
+            // Lock scroll when menu is open
             if (overlay.classList.contains('active')) {
                 document.body.style.overflow = 'hidden';
             } else {
                 document.body.style.overflow = '';
             }
         }
-        
-        // Solution message updates
+
+        // Solutions right panel
         const solutionMessages = {
-            multi: {
-                html: '<div style="background: linear-gradient(135deg, rgba(0,0,0,0.4), rgba(0,0,0,0.2)), url(\'https://cell-gate.com/wp-content/uploads/2025/10/AdobeStock_1557359565_Preview.jpeg\') center/cover; min-height: 200px; display: flex; align-items: center; justify-content: center; border-radius: 8px;"><div style="color: white; text-align: center; padding: 20px;"><h3 style="font-size: 26px; font-weight: 700; margin: 0; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">Multi-Family Solutions</h3></div></div>'
-            },
-            single: {
-                html: '<div style="background: linear-gradient(135deg, rgba(0,0,0,0.4), rgba(0,0,0,0.2)), url(\'https://cell-gate.com/wp-content/uploads/2025/10/AdobeStock_1557531842.jpeg\') center/cover; min-height: 200px; display: flex; align-items: center; justify-content: center; border-radius: 8px;"><div style="color: white; text-align: center; padding: 20px;"><h3 style="font-size: 26px; font-weight: 700; margin: 0; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">Single-Family Solutions</h3></div></div>'
-            },
-            commercial: {
-                html: '<div style="background: linear-gradient(135deg, rgba(0,0,0,0.4), rgba(0,0,0,0.2)), url(\'https://cell-gate.com/wp-content/uploads/2025/10/AdobeStock_1156207016_Preview.jpeg\') center/cover; min-height: 200px; display: flex; align-items: center; justify-content: center; border-radius: 8px;"><div style="color: white; text-align: center; padding: 20px;"><h3 style="font-size: 26px; font-weight: 700; margin: 0; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">Commercial Solutions</h3></div></div>'
-            },
-            default: {
-                html: '<img src="https://cell-gate.com/wp-content/uploads/2025/06/HOA.jpeg" alt="Solutions" style="max-width: 100%; height: auto; border-radius: 8px;">'
-            }
+            multi: { html: '<div style="background: linear-gradient(135deg, rgba(0,0,0,0.4), rgba(0,0,0,0.2)), url(\'https://cell-gate.com/wp-content/uploads/2025/10/AdobeStock_1557359565_Preview.jpeg\') center/cover; min-height: 200px; display: flex; align-items: center; justify-content: center; border-radius: 8px;"><div style="color: white; text-align: center; padding: 20px;"><h3 style="font-size: 26px; font-weight: 700; margin: 0; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">Multi-Family Solutions</h3></div></div>' },
+            single: { html: '<div style="background: linear-gradient(135deg, rgba(0,0,0,0.4), rgba(0,0,0,0.2)), url(\'https://cell-gate.com/wp-content/uploads/2025/10/AdobeStock_1557531842.jpeg\') center/cover; min-height: 200px; display: flex; align-items: center; justify-content: center; border-radius: 8px;"><div style="color: white; text-align: center; padding: 20px;"><h3 style="font-size: 26px; font-weight: 700; margin: 0; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">Single-Family Solutions</h3></div></div>' },
+            commercial: { html: '<div style="background: linear-gradient(135deg, rgba(0,0,0,0.4), rgba(0,0,0,0.2)), url(\'https://cell-gate.com/wp-content/uploads/2025/10/AdobeStock_1156207016_Preview.jpeg\') center/cover; min-height: 200px; display: flex; align-items: center; justify-content: center; border-radius: 8px;"><div style="color: white; text-align: center; padding: 20px;"><h3 style="font-size: 26px; font-weight: 700; margin: 0; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">Commercial Solutions</h3></div></div>' },
+            default: { html: '<img src="https://cell-gate.com/wp-content/uploads/2025/06/HOA.jpeg" alt="Solutions" style="max-width: 100%; height: auto; border-radius: 8px;">' }
         };
-        
-        function updateSolutionMessage(type) {
-            const messageBox = document.getElementById('solutionMessage');
-            const message = solutionMessages[type] || solutionMessages.default;
-            messageBox.innerHTML = message.html;
+        function updateSolutionMessage(type){
+            const box = document.getElementById('solutionMessage');
+            const msg = solutionMessages[type] || solutionMessages.default;
+            box.innerHTML = msg.html;
         }
-        
-        function resetSolutionMessage() {
-            updateSolutionMessage('default');
-        }
-        
-        // Why CellGate message updates with expansion
+        function resetSolutionMessage(){ updateSolutionMessage('default'); }
+
+        // Why CellGate right panel - includes Blog image request
         const whyMessages = {
-            howItWorks: {
-                html: '<div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 15px;"><img src="https://cell-gate.com/wp-content/uploads/2025/10/Untitled-100-x-100-px.png" style="width: 100%; height: auto; border-radius: 6px;"><img src="https://cell-gate.com/wp-content/uploads/2025/10/Untitled-100-x-100-px-2.png" style="width: 100%; height: auto; border-radius: 6px;"><img src="https://cell-gate.com/wp-content/uploads/2025/10/Untitled-100-x-100-px-1.png" style="width: 100%; height: auto; border-radius: 6px;"><img src="https://cell-gate.com/wp-content/uploads/2025/10/Untitled-100-x-100-px-3.png" style="width: 100%; height: auto; border-radius: 6px;"></div><p style="text-align: center; font-size: 14px; font-weight: 600; color: #333;">Know who was on your property and when</p>'
-            },
-            control: {
-                html: '<div style="text-align: center;"><img src="https://i.ibb.co/HpryLZYX/Screen-Shot-2025-09-30-at-11-35-54-PM.png" style="max-width: 70%; height: auto; border-radius: 8px; margin-bottom: 15px;"><p style="font-size: 14px; font-weight: 600; color: #333; margin-bottom: 12px;">Control your property from anywhere</p><div style="display: flex; justify-content: center; gap: 8px;"><a href="https://play.google.com/store/apps/details?id=com.celaccess&hl=en_US&pli=1" target="_blank"><img src="https://lh3.googleusercontent.com/q1k2l5CwMV31JdDXcpN4Ey7O43PxnjAuZBTmcHEwQxVuv_2wCE2gAAQMWxwNUC2FYEOnYgFPOpw6kmHJWuEGeIBLTj9CuxcOEeU8UXyzWJq4NJM3lg=s0" alt="Get it on Google Play" style="height: 32px;"></a><a href="https://apps.apple.com/us/app/cellgate-mobile-connect/id575775114" target="_blank"><img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store" style="height: 32px;"></a></div></div>'
-            },
-            centralized: {
-                html: '<div style="text-align: center;"><img src="https://cell-gate.com/wp-content/uploads/2025/10/Untitled-design-3.png" alt="TrueCloud Connect" style="max-width: 90%; height: auto; margin-bottom: 8px;"><p style="font-size: 14px; font-weight: 600; color: #333;">Single login for all products</p></div>'
-            },
-            support: {
-                html: '<div style="text-align: center;"><img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=600" style="max-width: 100%; height: auto; border-radius: 8px; margin-bottom: 15px;"><p style="font-size: 14px; font-weight: 600; color: #333;">Expert help that keeps you running</p></div>'
-            },
-            /* Blog preview image - shows on hover and can be default on blog pages */
-            blog: {
-                html: '<div style="text-align:center;"><img src="/wp-content/uploads/2025/09/Visitor-Pass-Type-Pin-Code-Visitor-Pass-Zoomed.png" alt="Visitor Pass - PIN Code zoomed" style="max-width:100%; height:auto; border-radius:8px;"></div>'
-            }
+            howItWorks: { html: '<div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 15px;"><img src="https://cell-gate.com/wp-content/uploads/2025/10/Untitled-100-x-100-px.png" style="width: 100%; height: auto; border-radius: 6px;"><img src="https://cell-gate.com/wp-content/uploads/2025/10/Untitled-100-x-100-px-2.png" style="width: 100%; height: auto; border-radius: 6px;"><img src="https://cell-gate.com/wp-content/uploads/2025/10/Untitled-100-x-100-px-1.png" style="width: 100%; height: auto; border-radius: 6px;"><img src="https://cell-gate.com/wp-content/uploads/2025/10/Untitled-100-x-100-px-3.png" style="width: 100%; height: auto; border-radius: 6px;"></div><p style="text-align: center; font-size: 14px; font-weight: 600; color: #333;">Know who was on your property and when</p>' },
+            control: { html: '<div style="text-align: center;"><img src="https://i.ibb.co/HpryLZYX/Screen-Shot-2025-09-30-at-11-35-54-PM.png" style="max-width: 70%; height: auto; border-radius: 8px; margin-bottom: 15px;"><p style="font-size: 14px; font-weight: 600; color: #333; margin-bottom: 12px;">Control your property from anywhere</p><div style="display: flex; justify-content: center; gap: 8px;"><a href="https://play.google.com/store/apps/details?id=com.celaccess&hl=en_US&pli=1" target="_blank"><img src="https://lh3.googleusercontent.com/q1k2l5CwMV31JdDXcpN4Ey7O43PxnjAuZBTmcHEwQxVuv_2wCE2gAAQMWxwNUC2FYEOnYgFPOpw6kmHJWuEGeIBLTj9CuxcOEeU8UXyzWJq4NJM3lg=s0" alt="Get it on Google Play" style="height: 32px;"></a><a href="https://apps.apple.com/us/app/cellgate-mobile-connect/id575775114" target="_blank"><img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store" style="height: 32px;"></a></div></div>' },
+            centralized: { html: '<div style="text-align: center;"><img src="https://cell-gate.com/wp-content/uploads/2025/10/Untitled-design-3.png" alt="TrueCloud Connect" style="max-width: 90%; height: auto; margin-bottom: 8px;"><p style="font-size: 14px; font-weight: 600; color: #333;">Single login for all products</p></div>' },
+            support: { html: '<div style="text-align: center;"><img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=600" style="max-width: 100%; height: auto; border-radius: 8px; margin-bottom: 15px;"><p style="font-size: 14px; font-weight: 600; color: #333;">Expert help that keeps you running</p></div>' },
+            blog: { html: '<div style="text-align:center;"><img src="/wp-content/uploads/2025/09/Visitor-Pass-Type-Pin-Code-Visitor-Pass-Zoomed.png" alt="Visitor Pass - PIN Code zoomed" style="max-width:100%; height:auto; border-radius:8px;"></div>' }
         };
-        
-        function updateWhyMessage(type) {
+        function updateWhyMessage(type){
             const messageBox = document.getElementById('whyMessage');
             const megaMenu = document.getElementById('whyMegaMenu');
             const message = whyMessages[type];
-            
-            if (message) {
+            if(message){
                 messageBox.style.display = 'block';
-                messageBox.style.cssText = 'display: block; background: #f5f5f5; padding: 25px; border-radius: 8px; color: #333; border: 3px solid #52A6A5;';
+                messageBox.style.cssText = 'display:block;background:#f5f5f5;padding:25px;border-radius:8px;color:#333;border:3px solid #52A6A5;';
                 messageBox.innerHTML = message.html;
                 megaMenu.classList.add('expanded');
             }
         }
-        
-        function resetWhyMessage() {
+        function resetWhyMessage(){
             const messageBox = document.getElementById('whyMessage');
             const megaMenu = document.getElementById('whyMegaMenu');
             messageBox.style.display = 'none';
             messageBox.innerHTML = '';
             megaMenu.classList.remove('expanded');
         }
-        
-        // Set up Why CellGate hover and focus events
-        document.addEventListener('DOMContentLoaded', function() {
-            const benefitLinks = document.querySelectorAll('.benefit-link');
-            
-            benefitLinks.forEach(link => {
-                link.addEventListener('mouseenter', function() {
-                    const feature = this.getAttribute('data-feature');
-                    updateWhyMessage(feature);
-                });
-                link.addEventListener('focus', function() {
-                    const feature = this.getAttribute('data-feature');
-                    updateWhyMessage(feature);
-                });
+
+        // Events
+        document.addEventListener('DOMContentLoaded', function () {
+            // Hover - focus previews for Why CellGate
+            document.querySelectorAll('.benefit-link').forEach(link => {
+                link.addEventListener('mouseenter', function(){ updateWhyMessage(this.getAttribute('data-feature')); });
+                link.addEventListener('focus', function(){ updateWhyMessage(this.getAttribute('data-feature')); });
             });
-            
+
             const whyMenuContainer = document.getElementById('whyMenuContainer');
-            if (whyMenuContainer) {
-                whyMenuContainer.addEventListener('mouseleave', function() {
-                    resetWhyMessage();
-                });
-                whyMenuContainer.addEventListener('focusout', function(e) {
-                    // if focus moves outside the menu, reset
-                    if (!whyMenuContainer.contains(e.relatedTarget)) {
-                        resetWhyMessage();
-                    }
+            if(whyMenuContainer){
+                whyMenuContainer.addEventListener('mouseleave', resetWhyMessage);
+                whyMenuContainer.addEventListener('focusout', function(e){
+                    if(!whyMenuContainer.contains(e.relatedTarget)){ resetWhyMessage(); }
                 });
             }
 
-            // If you are on the blog, preload the blog image into the right-hand area
-            if (window.location && window.location.pathname && window.location.pathname.indexOf('/blog/') !== -1) {
-                updateWhyMessage('blog');
-            }
+            // Show the blog image by default when on any blog path
+            try{
+                const path = (window.location && window.location.pathname) ? window.location.pathname : '';
+                if(path.indexOf('/blog') !== -1){ updateWhyMessage('blog'); }
+            }catch(e){ /* no-op */ }
 
-            // Default solution message
+            // Default for Solutions preview
             resetSolutionMessage();
         });
     </script>
