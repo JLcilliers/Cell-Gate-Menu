@@ -6,6 +6,11 @@
     <title>CellGate Mega Menu</title>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        :root{
+            /* One place to control fixed dropdown width for About - Support - Dealers */
+            --fixed-dropdown-width: 900px;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -173,27 +178,9 @@
             min-width: 900px;
             max-width: 1200px;
         }
-        
-        /* Override for About, Support, and Dealers menus */
-        .about-menu,
-        .support-menu,
-        .dealers-menu {
-            min-width: auto !important;
-            width: auto !important;
-            max-width: none !important;
-        }
-        
-        /* Why CellGate specific - starts narrow */
-        .why-menu {
-            min-width: 400px;
-            transition: all 0.3s ease;
-        }
-        
-        .why-menu.expanded {
-            min-width: 900px;
-        }
-        
-        .nav-item:hover .mega-menu {
+
+        .nav-item:hover .mega-menu,
+        .nav-item:focus-within .mega-menu {
             opacity: 1;
             visibility: visible;
             transform: translateX(-50%) translateY(0);
@@ -224,75 +211,75 @@
         .why-menu.expanded .mega-menu-content {
             grid-template-columns: repeat(2, 1fr);
         }
-        
+
+        /* --- Fixed width and horizontal items for About - Support - Dealers --- */
+        .about-menu,
+        .support-menu,
+        .dealers-menu {
+            min-width: var(--fixed-dropdown-width) !important;
+            width: var(--fixed-dropdown-width) !important;
+            max-width: var(--fixed-dropdown-width) !important;
+        }
+
+        .about-menu .mega-menu-content,
         .support-menu .mega-menu-content,
-        .dealers-menu .mega-menu-content,
-        .about-menu .mega-menu-content {
+        .dealers-menu .mega-menu-content {
             display: block;
             text-align: center;
+            padding: 25px 30px !important;
         }
-        
+
+        .about-menu .menu-column,
+        .support-menu .menu-column,
+        .dealers-menu .menu-column {
+            min-width: auto;
+            width: 100%;
+        }
+
+        .about-menu .column-title,
         .support-menu .column-title,
-        .dealers-menu .column-title,
-        .about-menu .column-title {
+        .dealers-menu .column-title {
             text-align: center;
             border-bottom: 2px solid #52A6A5;
             padding-bottom: 10px;
-            margin-bottom: 20px;
-        }
-        
-        .support-menu .support-links,
-        .dealers-menu .support-links,
-        .about-menu .support-links {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            flex-wrap: wrap;
-        }
-        
-        .support-menu .support-link,
-        .dealers-menu .support-link,
-        .about-menu .support-link {
-            flex: 0 1 auto;
-            min-width: 200px;
-        }
-        
-        /* About menu specific layout */
-        .about-menu .mega-menu-content {
-            padding: 25px 30px !important;
-        }
-        
-        .about-menu .menu-column {
-            min-width: auto !important;
-            width: auto !important;
-        }
-        
-        .about-menu .column-title {
+            margin-bottom: 16px;
             font-size: 13px;
         }
-        
-        .about-menu .support-links {
+
+        /* Make lists horizontal - single row - no wrapping */
+        .about-menu .support-links,
+        .support-menu .support-links,
+        .dealers-menu .support-links {
+            display: flex;
             flex-direction: row;
+            justify-content: center;
             align-items: center;
-            flex-wrap: nowrap;
-            margin: 0 !important;
-            padding: 0 !important;
+            gap: 28px;
             list-style: none;
-        }
-        
-        .about-menu .support-links li {
-            display: flex;
-        }
-        
-        .about-menu .support-link {
-            padding: 8px 15px;
-            margin-bottom: 0;
-            font-size: 14px;
+            margin: 0;
+            padding: 0;
+            flex-wrap: nowrap;
             white-space: nowrap;
-            display: flex;
+        }
+
+        .about-menu .support-links li,
+        .support-menu .support-links li,
+        .dealers-menu .support-links li {
+            display: inline-flex;
+        }
+
+        .about-menu .support-link,
+        .support-menu .support-link,
+        .dealers-menu .support-link {
+            display: inline-flex;
             align-items: center;
             gap: 8px;
+            padding: 8px 14px;
+            margin: 0; /* kill vertical spacing so items stay in one line */
+            font-size: 14px;
+            white-space: nowrap;
         }
+        /* --- End fixed width and horizontal items --- */
         
         /* Column Styles */
         .menu-column {
@@ -480,7 +467,7 @@
             font-size: 16px;
         }
         
-        /* TPSA Prominent Link - Now an image */
+        /* TPSA Prominent Link - now an image */
         .tpsa-prominent-link {
             display: block;
             margin-bottom: 20px;
@@ -705,6 +692,15 @@
                 padding: 30px;
                 gap: 30px;
             }
+
+            /* Keep fixed menus consistent on medium viewports */
+            .about-menu,
+            .support-menu,
+            .dealers-menu {
+                min-width: var(--fixed-dropdown-width) !important;
+                width: var(--fixed-dropdown-width) !important;
+                max-width: var(--fixed-dropdown-width) !important;
+            }
         }
         
         @media (max-width: 992px) {
@@ -723,6 +719,14 @@
             
             .products-menu .mega-menu-content {
                 grid-template-columns: repeat(2, 1fr);
+            }
+
+            .about-menu,
+            .support-menu,
+            .dealers-menu {
+                min-width: 700px !important;
+                width: 700px !important;
+                max-width: 700px !important;
             }
         }
         
@@ -798,7 +802,7 @@
                 </div>
                 
                 <!-- Mobile Menu Button -->
-                <button class="mobile-menu-button" onclick="toggleMobileMenu()">
+                <button class="mobile-menu-button" onclick="toggleMobileMenu()" aria-label="Toggle menu">
                     <span></span>
                     <span></span>
                     <span></span>
@@ -809,7 +813,7 @@
                         <!-- SOLUTIONS MENU -->
                         <li class="nav-item">
                             <a href="https://cell-gate.com/access-control-solutions/" class="nav-link has-dropdown">Solutions</a>
-                            <div class="mega-menu solutions-menu">
+                            <div class="mega-menu solutions-menu" role="menu" aria-label="Solutions">
                                 <div class="mega-menu-content">
                                     <div class="menu-column">
                                         <h3 class="column-title">By Market</h3>
@@ -861,7 +865,7 @@
                         <!-- PRODUCTS MENU -->
                         <li class="nav-item">
                             <a href="https://cell-gate.com/watchman/" class="nav-link has-dropdown">Products</a>
-                            <div class="mega-menu products-menu">
+                            <div class="mega-menu products-menu" role="menu" aria-label="Products">
                                 <div class="mega-menu-content">
                                     <!-- Column 1: Video Intercom -->
                                     <div class="menu-column">
@@ -889,7 +893,7 @@
                                             <li class="product-item">
                                                 <a href="https://cell-gate.com/watchman-w480/" class="product-link">
                                                     <div class="product-name">Watchman W480 series</div>
-                                                    <div class="product-meta">8" touchscreen with QR & PIN codes</div>
+                                                    <div class="product-meta">8&quot; touchscreen with QR & PIN codes</div>
                                                 </a>
                                             </li>
                                             <li class="product-item">
@@ -987,7 +991,7 @@
                         <!-- WHY CELLGATE MENU -->
                         <li class="nav-item">
                             <a href="https://cell-gate.com/how-it-works/" class="nav-link has-dropdown">Why CellGate</a>
-                            <div class="mega-menu why-menu" id="whyMegaMenu">
+                            <div class="mega-menu why-menu" id="whyMegaMenu" role="menu" aria-label="Why CellGate">
                                 <div class="mega-menu-content" id="whyMenuContainer">
                                     <div class="menu-column">
                                         <a href="https://cell-gate.com/" class="tpsa-prominent-link">
@@ -1024,7 +1028,9 @@
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="https://cell-gate.com/blog/" class="support-link">
+                                                <!-- Blog now participates in the right-hand preview -->
+                                                <a href="https://cell-gate.com/blog/" class="support-link benefit-link"
+                                                   data-feature="blog">
                                                     <span class="support-icon">📝</span>
                                                     Blog
                                                 </a>
@@ -1033,7 +1039,7 @@
                                     </div>
                                     
                                     <div class="menu-column" id="whyMessage" style="display: none;">
-                                        <!-- Content will be dynamically inserted here on hover -->
+                                        <!-- Content will be dynamically inserted here on hover or when on blog -->
                                     </div>
                                 </div>
                             </div>
@@ -1042,7 +1048,7 @@
                         <!-- ABOUT US MENU -->
                         <li class="nav-item">
                             <a href="https://cell-gate.com/about-us/" class="nav-link has-dropdown">About Us</a>
-                            <div class="mega-menu about-menu">
+                            <div class="mega-menu about-menu" role="menu" aria-label="About Us">
                                 <div class="mega-menu-content">
                                     <div class="menu-column">
                                         <h3 class="column-title">Company</h3>
@@ -1079,7 +1085,7 @@
                         <!-- SUPPORT MENU -->
                         <li class="nav-item">
                             <a href="https://cell-gate.com/resources/" class="nav-link has-dropdown">Support</a>
-                            <div class="mega-menu support-menu">
+                            <div class="mega-menu support-menu" role="menu" aria-label="Support">
                                 <div class="mega-menu-content">
                                     <div class="menu-column">
                                         <h3 class="column-title">Support & Help</h3>
@@ -1116,7 +1122,7 @@
                         <!-- DEALERS MENU -->
                         <li class="nav-item">
                             <a href="https://cell-gate.com/dealer-inquiries/" class="nav-link has-dropdown">Dealers</a>
-                            <div class="mega-menu dealers-menu">
+                            <div class="mega-menu dealers-menu" role="menu" aria-label="Dealers">
                                 <div class="mega-menu-content">
                                     <div class="menu-column">
                                         <h3 class="column-title">Dealer Program</h3>
@@ -1166,7 +1172,7 @@
             <div class="logo">
                 <img src="https://cell-gate.com/wp-content/uploads/2025/08/CellGate-TPSA-Total-Pgffdgthjroperty-Security-Access-Logo-Wired-Where-You-Need-it-Wireless-Where-You-Have-It-1.png" alt="CellGate" style="height: 35px;">
             </div>
-            <button class="mobile-nav-close" onclick="toggleMobileMenu()">×</button>
+            <button class="mobile-nav-close" onclick="toggleMobileMenu()" aria-label="Close menu">×</button>
         </div>
         
         <ul class="mobile-nav-list">
@@ -1330,7 +1336,7 @@
         
         function updateSolutionMessage(type) {
             const messageBox = document.getElementById('solutionMessage');
-            const message = solutionMessages[type];
+            const message = solutionMessages[type] || solutionMessages.default;
             messageBox.innerHTML = message.html;
         }
         
@@ -1351,6 +1357,10 @@
             },
             support: {
                 html: '<div style="text-align: center;"><img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=600" style="max-width: 100%; height: auto; border-radius: 8px; margin-bottom: 15px;"><p style="font-size: 14px; font-weight: 600; color: #333;">Expert help that keeps you running</p></div>'
+            },
+            /* Blog preview image - shows on hover and can be default on blog pages */
+            blog: {
+                html: '<div style="text-align:center;"><img src="/wp-content/uploads/2025/09/Visitor-Pass-Type-Pin-Code-Visitor-Pass-Zoomed.png" alt="Visitor Pass - PIN Code zoomed" style="max-width:100%; height:auto; border-radius:8px;"></div>'
             }
         };
         
@@ -1375,7 +1385,7 @@
             megaMenu.classList.remove('expanded');
         }
         
-        // Set up Why CellGate hover events
+        // Set up Why CellGate hover and focus events
         document.addEventListener('DOMContentLoaded', function() {
             const benefitLinks = document.querySelectorAll('.benefit-link');
             
@@ -1384,9 +1394,9 @@
                     const feature = this.getAttribute('data-feature');
                     updateWhyMessage(feature);
                 });
-                
-                link.addEventListener('mouseleave', function() {
-                    // Don't reset immediately to allow hovering over the right column
+                link.addEventListener('focus', function() {
+                    const feature = this.getAttribute('data-feature');
+                    updateWhyMessage(feature);
                 });
             });
             
@@ -1395,7 +1405,21 @@
                 whyMenuContainer.addEventListener('mouseleave', function() {
                     resetWhyMessage();
                 });
+                whyMenuContainer.addEventListener('focusout', function(e) {
+                    // if focus moves outside the menu, reset
+                    if (!whyMenuContainer.contains(e.relatedTarget)) {
+                        resetWhyMessage();
+                    }
+                });
             }
+
+            // If you are on the blog, preload the blog image into the right-hand area
+            if (window.location && window.location.pathname && window.location.pathname.indexOf('/blog/') !== -1) {
+                updateWhyMessage('blog');
+            }
+
+            // Default solution message
+            resetSolutionMessage();
         });
     </script>
 </body>
