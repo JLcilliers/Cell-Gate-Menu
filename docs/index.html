@@ -56,7 +56,7 @@
       transform:translateX(-50%) translateY(-10px);
       background:#fff;box-shadow:0 10px 40px rgba(0,0,0,.15);
       border-top:3px solid #52A6A5;
-      opacity:0;visibility:hidden;transition:all .3s ease;
+      opacity:0;visibility:hidden;transition:all .25s ease;
       min-width:900px;max-width:1200px;
     }
     .nav-item:hover .mega-menu,.nav-item:focus-within .mega-menu{
@@ -68,17 +68,27 @@
     .solutions-menu .mega-menu-content{grid-template-columns:repeat(2,1fr);}
     .products-menu .mega-menu-content{grid-template-columns:repeat(3,1fr);gap:25px;}
 
-    /* WHY CELLGATE - default is compact single column - no preview space at all */
-    .why-menu .mega-menu-content{grid-template-columns:1fr;align-items:start;transition:all .3s ease;}
+    /* WHY CELLGATE - narrow by default - expands only when a preview is shown */
+    .why-menu{
+      min-width:600px !important;
+      width:600px !important;
+      max-width:600px !important;
+      transition:min-width .25s ease,width .25s ease,max-width .25s ease;
+    }
+    .why-menu .mega-menu-content{grid-template-columns:1fr;align-items:start;transition:all .25s ease;}
+    .why-menu.expanded{
+      min-width:1040px !important;
+      width:1040px !important;
+      max-width:1040px !important;
+    }
     .why-menu.expanded .mega-menu-content{grid-template-columns:1fr 1fr;}
 
     /* Compact heading for Why CellGate */
     .why-heading{
-      font-size:22px;line-height:1.1;font-weight:800;letter-spacing:.5px;
-      color:#0b6fb9;text-transform:uppercase;margin:6px 0 16px 0;white-space:nowrap;
+      font-size:20px;line-height:1.1;font-weight:800;letter-spacing:.5px;
+      color:#0b6fb9;text-transform:uppercase;margin:6px 0 14px 0;white-space:nowrap;
     }
-    /* When preview is shown, make heading a bit smaller so it stays on one line */
-    .why-menu.expanded .why-heading{font-size:20px;margin-bottom:12px;}
+    .why-menu.expanded .why-heading{font-size:18px;margin-bottom:12px;}
 
     /* About - Support - Dealers: fixed width and horizontal items */
     .about-menu,.support-menu,.dealers-menu{
@@ -180,6 +190,9 @@
         width:var(--fixed-dropdown-width) !important;
         max-width:var(--fixed-dropdown-width) !important;
       }
+      /* keep Why CellGate narrow by default even on large tablets */
+      .why-menu{min-width:560px !important;width:560px !important;max-width:560px !important;}
+      .why-menu.expanded{min-width:980px !important;width:980px !important;max-width:980px !important;}
     }
     @media (max-width:992px){
       .main-nav{gap:20px;}
@@ -187,6 +200,8 @@
       .mega-menu{min-width:600px;max-width:700px;}
       .products-menu .mega-menu-content{grid-template-columns:repeat(2,1fr);}
       .about-menu,.support-menu,.dealers-menu{min-width:700px !important;width:700px !important;max-width:700px !important;}
+      .why-menu{min-width:520px !important;width:520px !important;max-width:520px !important;}
+      .why-menu.expanded{min-width:900px !important;width:900px !important;max-width:900px !important;}
     }
     @media (max-width:768px){
       nav{display:none;}
@@ -374,7 +389,7 @@
                         </a>
                       </li>
                       <li>
-                        <!-- Blog shows an image on the right on hover, and by default on blog pages -->
+                        <!-- Blog shows an image on the right on hover - and on blog pages by default when opened -->
                         <a href="https://cell-gate.com/blog/" class="support-link benefit-link" data-feature="blog">
                           <span class="support-icon">📝</span> Blog
                         </a>
@@ -382,7 +397,7 @@
                     </ul>
                   </div>
 
-                  <!-- No right column here by default - it will be created dynamically on hover -->
+                  <!-- Right preview column is created dynamically on hover -->
                 </div>
               </div>
             </li>
@@ -593,7 +608,7 @@
       preview.style.cssText='background:#f5f5f5;padding:25px;border-radius:8px;color:#333;border:3px solid #52A6A5;';
       preview.innerHTML=msg.html;
 
-      menu.classList.add('expanded'); // triggers two column layout
+      menu.classList.add('expanded'); // triggers two column layout and width expansion
     }
 
     function clearWhyPreview(){
@@ -602,7 +617,7 @@
       if(preview && preview.parentNode){
         preview.parentNode.removeChild(preview); // remove the column entirely so no space remains
       }
-      menu.classList.remove('expanded'); // back to single column
+      menu.classList.remove('expanded'); // back to single column - narrow width
     }
 
     document.addEventListener('DOMContentLoaded',function(){
@@ -615,7 +630,7 @@
       const whyContainer=document.getElementById('whyMenuContainer');
       const whyMenu=document.getElementById('whyMegaMenu');
 
-      // When the Why CellGate menu opens, ensure it starts compact
+      // Ensure the menu starts compact every time it opens
       if(whyMenu){ whyMenu.addEventListener('mouseenter', clearWhyPreview); }
 
       // Leaving the menu restores compact mode
@@ -626,13 +641,12 @@
         });
       }
 
-      // On blog pages, auto show the blog image when the menu is hovered
+      // On blog pages, auto show the blog image once the Why menu is opened
       try{
         const path=(window.location && window.location.pathname) ? window.location.pathname : '';
         if(path.indexOf('/blog') !== -1){
           whyMenu && whyMenu.addEventListener('mouseenter', function once(){
             showWhyPreview('blog');
-            // keep it showing while inside - normal clear happens on mouseleave
             whyMenu.removeEventListener('mouseenter', once);
           });
         }
